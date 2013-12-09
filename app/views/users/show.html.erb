@@ -1,0 +1,29 @@
+<h3>
+  <%= current_user.first_name %>
+  <%= current_user.last_name %>
+
+  
+</h3>
+
+<% current_user.qualities.each do |d| %>
+	<%= d.quality %>
+<% end %>
+
+<% current_user.skills.each do |s| %>
+	<%= s.skill %>
+<% end %>
+
+<ul>
+  <b>Bijpassende vacatures</b><br>
+
+  <% @vacancies.each do |v|%>
+
+    <% if @matchscore[v] > 0 %>
+      <b>Functieomschrijving</b><br>
+     <li> <%= v.title %><br></li>
+
+      <b>Kwaliteitenscore</b><br>
+      <li><%= @matchscore[v] %> (<%= (@matchscore[v].to_f) /5 * 100 %> %)<br><br></li>
+    <% end %>
+  <% end %>
+</p>

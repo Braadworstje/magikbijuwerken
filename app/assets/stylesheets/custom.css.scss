@@ -1,0 +1,435 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+input{
+  border: 1px solid #dcdddf;
+  width: 225px;
+  height: 25px;
+  margin: 5px 0px;
+  color: #aeb2b5;
+  padding: 0px 30px 0px 5px;
+  float: left;
+
+}
+.link_input_icon{
+  background-image: url("icons/source.jpg");
+  height: 25px;
+  width:25px;
+  margin-top: 5px;
+  float: left;
+}
+a{
+  font-family: lato;
+  color: #222222;
+  font-size: 12px;
+}
+p{
+  font-family: lato;
+  color: #222222;
+  font-size: 12px;
+  margin: 10px;
+  float: left;
+}
+h1{
+  width: 100%;
+  height: auto;
+  font-size: 18px;
+  color: #4ba2dd;
+  margin-bottom: 5px;
+}
+body{
+  width: 960px;
+  height: auto;
+  margin: 0px auto;
+  padding: 0px auto;
+  background-color: #ecf0f1;
+}
+#header{
+  height: 200px;
+  width: 960px;
+  float: left
+}
+#content_left{
+  width: 240px;
+  height: 800px;
+  float: left;
+  margin-right: 10px;
+}
+#profile{
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  float: left;
+  position: relative;
+  margin-bottom: 10px;
+}
+  #profile_background{
+    height: 120px;
+    width: 240px;
+    background-image: url("/assets/clients/Jack Daniels/profile_background.jpg");
+    float: left;
+    margin-bottom: 60px;
+  }
+  #profile_picture{
+    width: 100px;
+    height: 100px;
+    background-image: url("profile_picture.jpg");
+    position: absolute;
+    top: 70px;
+    left: 70px;
+  }
+  a.profile_name{
+    font-size: 18px;
+  }
+  a.profile_quote{
+    font-size: 11px;
+    color: #898989;
+  }
+  
+  a.profile_name, a.profile_quote{
+    width: 220px;
+    height: auto;
+    float: left;
+    text-align: center;
+    padding: 0px 10px;
+  }
+  #profile_status{
+    width: 230px;
+    height: 20px;
+    margin-left: 5px;
+    float: left;
+    margin-top: 10px;
+  }
+  #profile_menu{
+    margin-top: 10px;
+    width: 241px;
+    height: 45px;
+    float: left;
+    margin-top: 10px;
+  
+  }
+    .box1, .box2, .box3{
+      width: 79px;
+      height: 100%;
+      float: left;
+      background-color: #1d2124;
+      border-right: 1px solid #000;
+    }
+    #profile_menu a{
+      font-size: 14px;
+      color: #fff;
+      padding-top: 15px;
+      float: left;
+      margin-left: 5px;
+    }
+    .box1:hover, .box2:hover, .box3:hover{
+      background-color: #000;
+      cursor: pointer;
+    }
+    .box1{
+      border-top: 5px solid #ea6254;
+    }
+    .box2{
+      border-top: 5px solid #41b873;
+    }
+    .box3{
+      border-top: 5px solid #f3cb2c;
+    }
+      .image{
+        float: left;
+        height: 24px;
+        width: 24px;
+        margin: 10px;
+      }
+      .box1 .image{
+        background-image: url("icons/images.png");
+      }
+      .box2 .image{
+        background-image: url("icons/qualities.png");
+      }
+      .box3 .image{
+        background-image: url("icons/appointments.png");
+      }
+  .box_240px, .box_710px{
+    width: 240px;
+    float: left;
+    background-color: #fff;
+    height: auto;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .box_210px{
+    width: 240px;
+  }
+  .box_710px{
+    width: 710px;
+  }
+  .title{
+    padding: 5px;
+    float: left;
+    background-color: #4ba2dd;
+  }
+  .box_240px .title{
+    width: 240px;
+  }
+  .box_710px .title{
+    width: 710px;
+  }
+  .title a{
+    color: #fff;
+  }
+  .title a.right{
+    float: right;
+    margin-right: 10px;
+  }
+  .box_240px ul{
+    width: 100%;
+    height: auto;
+    float: left;
+  }
+    .box_240px ul li{
+      float: left;
+      height: 40px;
+      width: 240px;
+      border-left: 5px solid #fff;
+      position: relative;
+    }
+    .box_240px ul li .menu_icon{
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 12px;
+      right: 10px;
+    }
+    .box_240px ul li:hover{
+      background-color: #f8f4f1;
+      cursor: pointer;
+    }
+    .box_240px ul li.profile:hover{
+      border-left: 5px solid #4ba2dd;
+    }
+    .box_240px ul li.media:hover{
+      border-left: 5px solid #ca6254;
+    }
+    .box_240px ul li.qualities:hover{
+      border-left: 5px solid #41b873;
+    }
+    .box_240px ul li.vacancies:hover{
+      border-left: 5px solid #34495e;
+    }
+    .box_240px ul li.courses:hover{
+      border-left: 5px solid #f3cb2c;
+    }
+    .box_240px ul li.profile .menu_icon{
+      background-image: url("icons/profile-16.png");
+    }
+    .box_240px ul li.media .menu_icon{
+      background-image: url("icons/images-16.png");
+    }
+    .box_240px ul li.qualities .menu_icon{
+      background-image: url("icons/qualities-16.png");
+    }
+    .box_240px ul li.vacancies .menu_icon{
+      background-image: url("icons/vacancies-16.png");
+    }
+    .box_240px ul li.courses .menu_icon{
+      background-image: url("icons/courses-16.png");
+    }
+    .box_240px ul li a{
+      color: #8d8070;
+      font-size: 12px;
+      padding: 15px 10px;
+      float: left;
+      height: 40px;
+      width: 240px;
+      display: block;
+    }
+#content_right{
+  width: 710px;
+  height: 800px;
+  float: left;
+}
+.matchbar_710{
+  width: 700px;
+  height:20px;
+  float: left;
+  margin: 5px;
+  background-color: #c8c8c8;
+  position: relative;
+}
+.matchbar_710 label{
+  background-color: #222222;
+  float: left;
+  height: 20px;
+  width: 70px;
+  padding: 4px 5px;
+  font-size: 11px;
+  color: #fff;
+  position: relative;
+}
+
+.matchbar_710BG{
+  background-image: url("matchbar-710.png");
+  width: 630px;
+  height: 20px;
+  float: left;
+  position: absolute;
+  left: 70px;
+}
+.match{
+  width: 50%;
+  height: 100%;
+  background-color: blue;
+  float: left;
+  position: absolute;
+  left: 42px;
+}
+table.requirements{
+  width: 300px;
+  margin: 10px;
+}
+table.requirements tr{
+  height: 10px;
+}
+table.requirements td{
+  padding-top: 5px;
+  width: 130px;
+  margin-right: 10px;
+  float: left;
+}
+.button{
+  height: 25px;
+  width: 120px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background-color: #4ba2dd;
+}
+.button a{
+  margin: 6px;
+  float: left;
+  color: #fff;
+}
+.button .button_icon{
+  background-image: url("icons/next.jpg");
+  height: 25px;
+  width:25px;
+  float: right;
+}
+.button:hover{
+  background-color: #2980b9;
+  cursor: pointer;
+}
+#add_media{
+  width: 230px;
+  height: auto;
+  float: left;
+  margin: 5px 0px 5px 5px;
+  position: relative;
+}
+#add_video{
+  width: 230px;
+  height: 100px;
+  float: left;
+  padding: 5px;
+  position: relative;
+}
+#add_video .button{
+  margin: 0px -10px -10px 0px;
+}
+#add_picture{
+  background-image: url("clients/Jack Daniels/dummy2.jpg");
+  float: left;
+  width: 230px;
+  height: 180px;
+  margin-top: 5px;
+}
+.opacity{
+  width: 100%;
+  height: 100%;
+  float: left;
+  background-color: #222222;
+  opacity:0.9;
+  filter:alpha(opacity=90); /* For IE8 and earlier */
+}
+.opacity:hover{
+  cursor: pointer;
+}
+.add_icon{
+  background-image: url("icons/Add-48.png");
+  width: 48px;
+  height: 48px;
+  margin: 60px auto;
+}
+.opacity a{
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  float: left;
+  margin-top: -50px;
+}
+#youtube_video{
+  float: left;
+  margin: 5px 0px 5px 5px;
+}
+img.picture{
+  width: 230px;
+  height: 180px;
+  float: left;
+  margin: 0px 0px 5px 5px;
+}
+/*CHOSEN*/
+
+.chosen-choices{
+  height: 50px !important;
+}
+
+.search-field{
+  height: 50px !important;
+}
+
+.search-field input{
+  height: 50px !important;
+}

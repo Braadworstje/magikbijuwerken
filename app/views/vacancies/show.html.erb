@@ -1,0 +1,16 @@
+<div class = "col-md-4">
+	<h1>Vacature | <%= @vacancy.id %></h1>
+	<p><%= @vacancy.title %></p><br>
+	<p>Omschrijving</p><p><%= @vacancy.description %></p><br>
+
+	<% @vacancy.qualities.each do |d| %>
+		<%= d.quality %>
+	<% end %>
+
+	<% @vacancy.skills.each do |s| %>
+		<%= s.skill %>
+	<% end %>
+
+	<li><%= link_to "Vacature instellingen", edit_vacancy_path %></li>
+                </ul>
+</div>
