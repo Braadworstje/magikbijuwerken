@@ -1,194 +1,64 @@
+<h1>Welkom bij magikbijuwerken</h1>
+<% if current_user? %>
 
-
-<% if signed_in? %>
-    <div id="header">
-           </div>
-                <div id="content_left">
-                        <div id="profile">
-                                <div id="profile_background">
-                                </div>
-                                <div id="profile_picture">
-                                </div>
-                                        <a class="profile_name">Jack Daniels</a>
-                                        <a class="profile_quote">Misschien geen diploma maar aan ervaring geen gebrek</a>
-                                <div id="profile_status">
-                                </div>
-                                <div id="profile_menu">
-                                        <div class="box1">
-                                                <div class="image">
-                                                </div>
-                                                <a> 4</a>
-                                        </div>
-                                        <div class="box2">
-                                                <div class="image">
-                                                </div>
-                                                <a> 4</a>
-                                        </div>
-                                        <div class="box3">
-                                                <div class="image">
-                                                </div>
-                                                <a> 4</a>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="box_240px">
-                                <div class="title">
-                                        <a>Menu</a>
-                                </div>
-                                <ul>
-                                        <li class="profile">
-                                                <%= link_to'Profiel', current_user%>
-                                                <div class="menu_icon">
-                                                </div>
-                                        </li>
-                                        <li class="media">
-                                                <a>Foto's en video's</a>
-                                                <div class="menu_icon">
-                                                </div>
-                                        </li>
-                                        <li class="qualities">
-                                                <a>Kwaliteiten</a>
-                                                <div class="menu_icon">
-                                                </div>
-                                        </li>
-                                        <li class="vacancies">
-                                                <a>Mijn vacatures</a>
-                                                <div class="menu_icon">
-                                                </div>
-                                        </li>
-                                        <li class="courses">
-                                                <a>Cursussen</a>
-                                                <div class="menu_icon">
-                                                </div>
-                                        </li>
-                                </ul>
-                        </div>
+<div id="content_left">
+        <div id="profile">
+                <div id="profile_background"></div>
+                <div id="profile_picture"></div>
+                <a class="profile_name">Jack Daniels</a>
+                <a class="profile_quote"><% current_user.qualities.each do |d| %>
+                <%= d.quality %>
+<% end %></a>
+                <div id="profile_status"></div>
+                <div id="profile_menu">
+                <div class="box1">
+                <div class="image"></div>
+                <a> 4</a>
                 </div>
-                
-                <div id="content_right">
-                        <!-- Voorbeeld vacature -->
-                        <div class="box_710px">
-                                <div class="title">
-                                    vacancy title
-                                        
-                                        
-                                        <a class="right"> </a>
-                                </div>
-                                <div class="matchbar_710">
-                                        
-                                        <div class="match">
-                                        </div>
-                                        <div class="matchbar_710BG">
-                                        </div>
-                                        
-                                        <label>50% match</label>
-                                </div>
-                                <p>Wij zijn voor onze opdrachtgever opzoek naar een gemotiveerde Allround  
-                                Schilder in de omgeving van Hilversum.Voor deze opdrachtgever werk je veel
-                                bij particulieren klanten in het hogere sigment. Kwaliteit staat ...Bekijk 
-                                de volledige vacature
-                                </p>
-                                <table class="requirements">
-                                        <tr>
-                                                <td>
-                                                        <a>Functie</a>
-                                                </td>
-                                                <td>
-                                                        <a>Schilder / Behanger</a>
-                                                </td>
-                                        </tr>
-                                        <tr>
-                                                <td>
-                                                        <a>Opleidingsniveau</a>
-                                                </td>
-                                                <td>
-                                                        <a>Niet Belangrijk</a>
-                                                </td>
-                                        </tr>
-                                        <tr>
-                                                <td>
-                                                        <a>Aantal uur/week</a>
-                                                </td>
-                                                <td>
-                                                        <a>40-40 uur / Vast</a>
-                                                </td>
-                                        </tr>
-                                        
-                                        <tr>
-                                                <td>
-                                                        <a>plaatsingdatum</a>
-                                                </td>
-                                                <td>
-                                                        <a>30-10-2013</a>
-                                                </td>
-                                        </tr>
-                                        <tr>
-                                                <td>
-                                                        <a>Vervaldatum</a>
-                                                </td>
-                                                <td>
-                                                        <a>31-12-2013</a>
-                                                </td>
-                                        </tr>
-                                </table>
-                                <div class="button">
-                                        <a> bekijk vacature</a>
-                                        <div class="button_icon">
-                                        </div>
-                                </div>
-                        </div>        
-                        <!-- End Voorbeeld vacature -->
-                        <!-- album beheer -->
-                        <div class="box_710px">
-                                        <div class="title">
-                                                <a>Album</a>
-                                        </div>
-                                
-                                <!-- foto/video toevoegen -->        
-                                <div id="add_media">
-                                        <div id="add_video">
-                                                <h1> Video Toevoegen</h1>
-                                                <input type="text" name="lname" value="Youtube link">
-                                                <div class="link_input_icon">
-                                                </input>
-                                                </div>
-                                                <div class="button">
-                                                        <a>Voeg toe</a>
-                                                        <div class="button_icon">
-                                                        </div>
-                                                </div>
-                                        </div><!-- End add_video -->
-                                        <div id="add_picture">
-                                                <div class="opacity">
-                                                        <div class="add_icon">
-                                                        </div>
-                                                        <a> Foto toevoegen</a>
-                                                </div>
-                                        </div><!-- END add_picture -->
-                                        
-                                        
+                <div class="box2">
+                <div class="image"></div>
+                <a> 4</a>
+                </div>
+                <div class="box3">
+                <div class="image"></div>
+                <a> 4</a>
+                </div>
+                </div>
+        </div>
+        <div class="box_240px">
+                <div class="title">
+                <a>Menu</a>
+                </div>
+                <ul>
+                <li class="profile">
+                <%= link_to'Profiel', current_user%>
+                <div class="menu_icon"></div>
+                </li>
+                <li class="qualities">
+                <a>Kwaliteiten</a>
+                <div class="menu_icon"></div>
+                </li>
+                <li class="vacancies">
+                <a>Mijn vacatures</a>
+                <div class="menu_icon"></div>
+                </li>
+                </ul>
+        </div>
+</div>
 
-                                </div><!-- END add_media -->
-                                <!-- youtube video -->
-                                <iframe id="youtube_video" width="463" height="285" src="http://www.youtube.com/embed/EYYgIb1YiO4" frameborder="0" allowfullscreen></iframe>
-                                <!-- youtube video -->
-                                <img class="picture" src="assets/clients/Jack Daniels/dummy1.jpg">
-                                <img class="picture" src="assets/clients/Jack Daniels/dummy2.jpg">
-                                <img class="picture" src="assets/clients/Jack Daniels/dummy3.jpg">
-                                
-                        </div> <!-- END album beheer -->
-                </div> <!-- END content_right div-->
-                <% else %>
-                <div id = "header">
-    <div id="content_left">
-  <h1>Mag ik bij u werken?</h1>
+ <!-- END album beheer -->
+</div> <!-- END content_right div-->
+<% else %>
+<div id = "header">
+<div id="content_left">
+<h1>Mag ik bij u werken?</h1>
 
-  <h2>
-    <p>Mag ik bij u werken is een website voor werkzoekenden.</p>
-  </h2>
-   <% if !current_user %>
-    <%= link_to "Registreren", signup_path, class: "btn btn-large btn-warning" %>
-   </div>
+<h2>
+<p>Mag ik bij u werken is een website voor werkzoekenden.</p>
+</h2>
+<% if !current_user %>
+<%= link_to "Registreren", signup_path, class: "btn btn-large btn-warning" %>
+</div>
 </div>
 </div>
 <% end %>

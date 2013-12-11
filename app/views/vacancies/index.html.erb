@@ -1,10 +1,42 @@
-<h1> Overzicht van vacatures</h1>
-<div id= "row">
-	<div class="span6 offset3">
+
+
+<div id="content_right">
+<!-- Voorbeeld vacature -->
 <% @vacancies.each do |v| %>
-	<h2>Vacature:<%= link_to v.id, v %></h3>
-	<%= v.description %><br>
-	<%= v.address %>
+<div class="box_710px">
+        <div class="title"><%= link_to v.title, v %><a class="right"> </a>
+        </div>
+        <div class="matchbar_710">
+                <div class="match">
+                </div>
+                <div class="matchbar_710BG">
+                </div>
+                <label>50% match</label>
+        </div>
+        <p><%= v.name %></p>
+        <table class="requirements">             
+        </table>
+                <div class="button">
+                        <%=link_to "bekijk vacature", v %>
+                                      <div class="button_icon">
+                </div>
+         </div>
+</div>        
+<!-- End Voorbeeld vacature -->
+<!-- album beheer -->
+<div class="box_710px">
+ <%= form_for(@user) do |f| %>   
+<%= select_tag(:vacancy_id, options_for_select(@vacancies.collect{|v| [v.id] }.sort_by { |e| }), {:multiple => true, class: 'chosen-vacancy-select'}) %>
+<%= f.submit %>
+ 
+      
+
+	<li><%= link_to "Vacature instellingen", edit_vacancy_path(v) %></li>
+    <% end %>
+</div><!-- END add_media -->
+<img class="picture" src="assets/clients/Jack Daniels/dummy1.jpg">
+<img class="picture" src="assets/clients/Jack Daniels/dummy2.jpg">
+<img class="picture" src="assets/clients/Jack Daniels/dummy3.jpg">
+
+</div>
 <% end %>
-</div>
-</div>

@@ -5,6 +5,29 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :current_user?, :is_admin?, :authorize
 
+def match(user)
+    @user = user
+    @vacancies = Vacancy.all
+    
+    @matchscore = {}
+    @matchscore.default = 0
+
+    @userqualities = [] unless @userqualities
+
+    @user.qualities.each do |uqs|
+      @userqualities << uqs
+    end
+
+    @vacancies.each do |vt|
+      vt.qualities.each do |q|
+        for userquality in @userqualities
+          if userquality == q
+            @matchscore[vt] += 1
+          end
+        end
+      end
+    end
+  end
 
  private
  

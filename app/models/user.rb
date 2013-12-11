@@ -14,7 +14,10 @@ class User < ActiveRecord::Base
  has_many :users_qualities_skills
  has_many :qualities, through: :users_qualities_skills
  has_many :skills, through: :users_qualities_skills
+ has_many :user_vacancies
+ has_many :vacancies, through: :user_vacancies
 
+ accepts_nested_attributes_for :user_vacancies, :vacancies
  accepts_nested_attributes_for :users_qualities_skills, :qualities
  accepts_nested_attributes_for :users_qualities_skills, :skills
 

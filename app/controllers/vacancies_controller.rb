@@ -1,7 +1,9 @@
 class VacanciesController < ApplicationController
   def index
   	@vacancies = Vacancy.all
+    @user = User.find_by_id(current_user)
   end
+
 
   def show
   	@vacancy = Vacancy.find(params[:id])
@@ -11,14 +13,13 @@ class VacanciesController < ApplicationController
   	@vacancy = Vacancy.new
 
     @qualities = Quality.all
-    @skills = Skill.all
 
     @vacancy.qualities.build
-    @vacancy.skills.build
   end
 
   def edit
   	@vacancy = Vacancy.find(params[:id])
+
 end
 
   def create 
@@ -27,10 +28,6 @@ end
   		if @vacancy.save
         params[:quality_id].split(',').each do |id|
           @vacancy.qualities << Quality.find(id)
-        end
-
-        params[:skill_id].split(',').each do |id|
-          @vacancy.skills << Skill.find(id)
         end
   			redirect_to vacancies_path, notice: 'Vacature geplaatst!'
   		else
@@ -47,12 +44,21 @@ end
       render 'edit'
     end
   end
+
+  def destroy
+  @vacancy = Vacancy.find(params[:id])
+  flash[:notice] = "Vacancy deleted" 
+  @vacancy.destroy
+  redirect_to @vacancy
+end
   end
 
   	
-
+def user_params
+  params.require(:id)
+end
 
 
 def vacancy_params
-params.require(:vacancy).permit(:titel, :description, :vacancy_region, :vacancy_id)
+params.require(:vacancy).permit(:title, :description, :vacancy_address, :id)
 end

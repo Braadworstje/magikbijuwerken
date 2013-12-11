@@ -1,16 +1,11 @@
-<div class = "col-md-4">
-	<h1>Vacature | <%= @vacancy.id %></h1>
-	<p><%= @vacancy.title %></p><br>
+
+	<div class="content-right">
+		<div class="box_710px">
+	<h1>Vacature | <%= @vacancy.title %></h1><br>
 	<p>Omschrijving</p><p><%= @vacancy.description %></p><br>
-
-	<% @vacancy.qualities.each do |d| %>
-		<%= d.quality %>
-	<% end %>
-
-	<% @vacancy.skills.each do |s| %>
-		<%= s.skill %>
-	<% end %>
-
-	<li><%= link_to "Vacature instellingen", edit_vacancy_path %></li>
-                </ul>
+	<%= link_to 'Vacature verwijderen', @vacancy, :confirm => 'Weet u het zeker?', :method => :delete %>
 </div>
+</div>
+
+
+	

@@ -1,26 +1,51 @@
-<h1>Werkzoekenden</h1>
+<div id="content_right">
+<!-- Voorbeeld vacature -->
+<div class="box_710px">
+        <div class="title">Vacature<a class="right"> </a>
+        </div>
+        <div class="matchbar_710">
+                <div class="match">
+                </div>
+                <div class="matchbar_710BG">
+                </div>
+                <label>50% match</label>
+        </div>
+        <p>Wij zijn voor onze opdrachtgever opzoek naar een gemotiveerde Allround  
+        Schilder in de omgeving van Hilversum.Voor deze opdrachtgever werk je veel
+        bij particulieren klanten in het hogere sigment. Kwaliteit staat ...Bekijk 
+        de volledige vacature
+        </p>
+        <table class="requirements">             
+        </table>
+                <div class="button">
+                        <a> bekijk vacature</a>
+                <div class="button_icon">
+                </div>
+         </div>
+</div>        
+<!-- End Voorbeeld vacature -->
+<!-- album beheer -->
+<div class="box_710px">
+<div class="title">
+<a>Gegevens</a>
+</div>
+</div><!-- END add_media -->
+<img class="picture" src="assets/clients/Jack Daniels/dummy1.jpg">
+<img class="picture" src="assets/clients/Jack Daniels/dummy2.jpg">
+<img class="picture" src="assets/clients/Jack Daniels/dummy3.jpg">
 
-<table>
-  <tr>
-    <th>Naam</th>
-    <th>Email adres</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+</div>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.first_name %></td>
-    <td><%= user.email %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete,
-                                     data: { confirm: 'Zeker?' } %></td>
-  </tr>
-<% end %>
-</table>
+<b>Bijpassende vacatures</b><br>
 
-<br />
+<% @matchscore |v| %>
+    <% if @matchscore[v] > 0 %>
+      <b>Functieomschrijving</b><br>
+     <li> <%= v.title %><br></li>
 
-<%= link_to 'New User', new_user_path %>
+      <b>Kwaliteitenscore</b><br>
+      <li><%= @matchscore[v] %> (<%= (@matchscore[v].to_f) /5 * 100 %> %)<br><br></li>
+    <% end %>
+    
+    
+    

@@ -1,29 +1,31 @@
-<h3>
-  <%= current_user.first_name %>
-  <%= current_user.last_name %>
-
-  
-</h3>
-
-<% current_user.qualities.each do |d| %>
-	<%= d.quality %>
-<% end %>
-
-<% current_user.skills.each do |s| %>
-	<%= s.skill %>
-<% end %>
-
-<ul>
-  <b>Bijpassende vacatures</b><br>
-
-  <% @vacancies.each do |v|%>
-
-    <% if @matchscore[v] > 0 %>
-      <b>Functieomschrijving</b><br>
-     <li> <%= v.title %><br></li>
-
-      <b>Kwaliteitenscore</b><br>
-      <li><%= @matchscore[v] %> (<%= (@matchscore[v].to_f) /5 * 100 %> %)<br><br></li>
-    <% end %>
-  <% end %>
-</p>
+<div id="content_left">
+        <div id="profile">
+                <div id="profile_background"></div>
+                <div id="profile_picture"></div>
+                <a class="profile_name"><%= current_user.first_name %><%= current_user.last_name %></a>
+                <a class="profile_quote"><% current_user.qualities.each do |d| %>
+                <%= d.quality %>
+</a>
+                <div id="profile_status"></div>
+                <div id="profile_menu">
+                <div class="box1">
+                <div class="image"></div>
+                <a> 4</a>
+                </div>
+                <div class="box2">
+                <div class="image"></div>
+                <a> 4</a>
+                </div>
+                <div class="box3">
+                <div class="image"></div>
+                <a> 4</a>
+                </div>
+                </div>
+        </div>
+        <% @current_user.vacancies.each do |va| %>
+        <%= va.description %>
+        <%= @matchscore[va] %>
+        <% end %>
+        
+      </div>
+        <% end %>

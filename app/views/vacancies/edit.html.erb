@@ -1,19 +1,17 @@
-<div class="panel panel-primary">
-        <div class="panel-heading">
+
         Vacature wijzigen
-        </div>
-        <div class="panel-body">
+
                 <%= form_for(@vacancy)  do |n| %>
 
-                <%= n.text_field :titel, :placeholder => "Vacature titel" %>
+                <%= n.text_field :title, :placeholder => "Vacature titel" %>
                 <br>
                 <%= n.text_field :description, :placeholder => "Beschrijving", :class => "form-control", :required => "required" %>
                 <br>
-                <%= n.text_field :vacancy_requirements, :placeholder => "Functie omschrijving", :class => "form-control", :required => "required" %>
+                <%= n.text_field :requirements, :placeholder => "Functie omschrijving", :class => "form-control", :required => "required" %>
                 <br>
-                <%= n.text_field :vacancy_region, :placeholder => "Plaats", :class => "form-control", :required => "required" %>
+                <%= n.text_field :address, :placeholder => "Plaats", :class => "form-control", :required => "required" %>
 
-               <button class="btn btn-large btn-warning" n.submit>Wijzigingen opslaan</button>
+               <%= n.submit %>
         <% end %> 
         </div>
 </div>

@@ -3,7 +3,6 @@ Project::Application.routes.draw do
   resources :users
   resources :vacancies
   resources :qualities
-  resources :skills
 
   root 'static_pages#_home'
 

@@ -14,8 +14,9 @@
                 <%= n.text_field :address, :placeholder => "Plaats", :class => "form-control", :required => "required" %>
 
                 <%= select_tag(:quality_id, options_for_select(@qualities.collect{ |q| [q.quality, q.id] }), {:multiple => true,  class: 'chosen-quality-select'}) %><br>
+                
 
-                <%= select_tag(:skill_id, options_for_select(@skills.collect{ |s| [s.skill, s.id] }), {:multiple => true, class: 'chosen-quality-select'}) %><br>
+            
 
 
 

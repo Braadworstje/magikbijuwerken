@@ -5,10 +5,9 @@ class UsersController < ApplicationController
     @user = User.new(params[:id])
 
     @qualities = Quality.all
-    @skills = Skill.all
 
     @user.qualities.build
-    @user.skills.build
+
   
   end
   
@@ -18,8 +17,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
-      if @user.qualities.nil?
-        redirect_to @werknemer
+      if @user.qualities.nil? 
+        redirect_to @user
       else
         match(@user)
       end
@@ -37,8 +36,13 @@ class UsersController < ApplicationController
 
 def update
  @user = User.find(params[:id])
- if @user.update_attributes(user_params)
-    redirect_to dashboard_path
+
+ @vacancies = Vacancy.all
+ if @user.update_attributes(params[:user])
+      params[:vacancy_id].split(',').each do |id|
+        @user.vacancies << Vacancy.find(id)
+      end
+    redirect_to current_user
   else
     render :action => :edit
   end
@@ -61,9 +65,7 @@ def destroy
         @user.qualities << Quality.find(id)
       end
 
-      params[:skill_id].split(',').each do |id|
-        @user.skills << Skill.find(id)
-      end
+      
 
       flash[:notice] = "User profile created"
       sign_in @user
@@ -73,37 +75,14 @@ def destroy
     end
   end
 
-def match(user)
-    @user = user
-    @vacancies = Vacancy.all
-    
-    @matchscore = {}
-    @matchscore.default = 0
 
-    @userqualities = [] unless @userqualities
-
-    @user.qualities.each do |uqs|
-      @userqualities << uqs
-    end
-
-    @vacancies.each do |vt|
-      vt.qualities.each do |q|
-        for userquality in @userqualities
-          if userquality == q
-            @matchscore[vt] += 1
-          end
-        end
-      end
-    end
-  end
 
 private
 
 def user_params 
   params.require(:user).permit(
-     :email, :password, :password_confirmation, :admin, :first_name, :last_name, :quality_id, :skill_id, {:quality_ids => []},
-      {:qualities_attributes => [:quality]}, {:skills_attributes => [:skill]}
-  )
+     :email, :password, :password_confirmation, :admin, :first_name, :last_name, :quality_id, :vacancy_id, :quality_ids, :vacancy_ids,
+      {:qualities_attributes => [:quality]}, {:vacancies_attributes => [:description]})
 end
 end
 

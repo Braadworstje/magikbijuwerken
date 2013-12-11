@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131128135825) do
+ActiveRecord::Schema.define(version: 20131210130028) do
 
   create_table "qualities", force: true do |t|
     t.string   "quality"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20131128135825) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "user_vacancies", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "vacancy_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
