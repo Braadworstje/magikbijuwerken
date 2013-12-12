@@ -1,21 +1,12 @@
-<h1>Log in</h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_tag sessions_path do %>
-      <div>
-        <%= label_tag 'email', 'Email' %><br>
+    <h1>Log in </h1>
+    <%= form_tag sessions_path do %>  
+        <%= label_tag "Email adres" %>
         <%= text_field_tag 'email' %>
-      </div>
-
-      <div>
-        <%= label_tag 'password', 'Password' %><br>
+        <%= label_tag "Wachtwoord" %><br>
         <%= password_field_tag 'password' %>
-      </div>
-
-      <%= submit_tag 'login' %>
+      <%= submit_tag 'Login' %>
     <% end %>
-  </div>
-</div>
+ 
 
 

@@ -1,31 +1,39 @@
+
 <div id="content_left">
-        <div id="profile">
-                <div id="profile_background"></div>
-                <div id="profile_picture"></div>
-                <a class="profile_name"><%= current_user.first_name %><%= current_user.last_name %></a>
-                <a class="profile_quote"><% current_user.qualities.each do |d| %>
-                <%= d.quality %>
-</a>
-                <div id="profile_status"></div>
-                <div id="profile_menu">
-                <div class="box1">
-                <div class="image"></div>
-                <a> 4</a>
-                </div>
-                <div class="box2">
-                <div class="image"></div>
-                <a> 4</a>
-                </div>
-                <div class="box3">
-                <div class="image"></div>
-                <a> 4</a>
-                </div>
-                </div>
-        </div>
+    <div class="column"
+        <div class="row">
+<div id="profile">
+    <div id="profile_background"></div>
+    <div id="profile_picture"></div>
+        <a class="profile_name"><%= current_user.first_name %><%= current_user.last_name %></a>
+        <a class="profile_quote"><% current_user.qualities.each do |d| %>
+        <%= d.quality %>
+    </a>
+    <div id="profile_status">
         <% @current_user.vacancies.each do |va| %>
         <%= va.description %>
         <%= @matchscore[va] %>
         <% end %>
-        
-      </div>
+
         <% end %>
+
+    </div>
+</div>
+<div id="content_left">
+    <div id="profile_menu">
+        <div class="box1">
+            <div class="image"></div>
+            <a> 4</a>
+        </div>
+            <div class="box2">
+            <div class="image"></div>
+            <a> 4</a>
+        </div>
+            <div class="box3">
+            <div class="image"></div>
+            <a> 4</a>
+        </div>
+    </div>
+</div>
+</div>
+</div> 

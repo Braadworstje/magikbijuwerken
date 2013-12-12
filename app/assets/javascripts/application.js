@@ -17,3 +17,4 @@
 //= require chosen-jquery
 //= require users
 //= require_tree .
+//= modernizr.custom.79639

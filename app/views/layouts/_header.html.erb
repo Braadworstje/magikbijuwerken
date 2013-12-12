@@ -1,29 +1,4 @@
-<% if signed_in? %>
-<div id="content_left">
-  <div class="box_240px">
-                <div class="title">
-                <a>Menu</a>
-                </div>
-                <ul>
-                <li><%= link_to'Home', root_path %></li>
-                <li class="profile">
-                <%= link_to'Profiel', current_user%>
-                <div class="menu_icon"></div>
-                </li>
-                <li class="qualities">
-                <a>Kwaliteiten</a>
-                <div class="menu_icon"></div>
-                </li>
-                <li class="vacancies">
-                <%= link_to "Vacatures bekijken", vacancies_path %>
-                <div class="menu_icon"></div>
-                </li>
-                <li><%= link_to "Log uit", signout_path, method: "delete" %></li>
-                </ul>
-  
-        </div>
-      </div>
-    <% end %>
+
                         
                                               
                                            
