@@ -1,7 +1,5 @@
 
 <div id="content_left">
-    <div class="column"
-        <div class="row">
 <div id="profile">
     <div id="profile_background"></div>
     <div id="profile_picture"></div>
@@ -9,17 +7,16 @@
         <a class="profile_quote"><% current_user.qualities.each do |d| %>
         <%= d.quality %>
     </a>
-    <div id="profile_status">
+    <% end %>
+    <div id="profile_status">Test
         <% @current_user.vacancies.each do |va| %>
         <%= va.description %>
         <%= @matchscore[va] %>
-        <% end %>
-
-        <% end %>
-
-    </div>
+        
 </div>
-<div id="content_left">
+        <% end %>
+
+    
     <div id="profile_menu">
         <div class="box1">
             <div class="image"></div>
@@ -37,3 +34,4 @@
 </div>
 </div>
 </div> 
+</div>

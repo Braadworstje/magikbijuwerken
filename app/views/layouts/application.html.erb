@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+        <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+      <meta name="description" content="Circle Hover Effects with CSS Transitions" />
+      <meta name="keywords" content="circle, border-radius, hover, css3, transition, image, thumbnail, effect, 3d" />
+      <meta name="author" content="Codrops" />
+
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <title><%= (yield(:title)) %></title>
     <%= stylesheet_link_tag "application", media: "all",
@@ -10,25 +17,16 @@
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <meta name="description" content="Circle Hover Effects with CSS Transitions" />
-        <meta name="keywords" content="circle, border-radius, hover, css3, transition, image, thumbnail, effect, 3d" />
-        <meta name="author" content="Codrops" />
-        <link rel="shortcut icon" href="../favicon.ico"> 
-        <link rel="stylesheet" type="text/css" href="css/style5.css" />
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700' rel='stylesheet' type='text/css' />
+      <link rel="shortcut icon" href="assets/profile_background.jpg"> 
     <!--[if lte IE 8]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
     </head>
   	<body>
-      <div class="container"
+      <div class="container">
     <%= render 'layouts/header' %>
       <% flash.each do |key, value| %>
-        <div class="alert alert-"><%= key %><%= value %></div>
-      <% end %>
+        <div> <%= key %><%= value %></div>
+              <% end %>
       <%= yield %>
-      </div>
     </div>
   </body>
 </html>
