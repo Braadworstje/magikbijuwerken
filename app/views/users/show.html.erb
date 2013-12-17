@@ -1,5 +1,4 @@
 
-            <% current_user.vacancies.each do |va| %>
 
 
 <div class="col-md-12 column kolom_boven">
@@ -38,6 +37,7 @@
             </tr>
         </thead>
         <tbody>
+            <% @current_user.vacancies.each do |va| %>
             <tr>
                 <td><%= va.description %></td>
                 <td><%= @matchscore[va] %></td>

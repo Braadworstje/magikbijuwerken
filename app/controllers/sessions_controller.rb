@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       # sign in
       session[:user_id] = user.id
       flash[:notice] = "You are signed in!"
-      redirect_to root_url
+      redirect_to user
     else
       flash.now[:alert] = "You have an invalid password or email adress!"
       render 'new'

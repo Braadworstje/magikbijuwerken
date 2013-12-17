@@ -31,7 +31,6 @@ class UsersController < ApplicationController
   end
 
  def edit
-
   @user = User.find(params[:id])
 # @user.find(params[:id])
     if @user.save
@@ -76,7 +75,7 @@ def destroy
 
       flash[:notice] = "User profile created"
       sign_in @user
-      redirect_to root_url
+      redirect_to current_user
     else
       render 'new'
     end
