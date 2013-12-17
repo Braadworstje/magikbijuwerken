@@ -1,3 +1,0 @@
-== README
-
-Magikbijuwerken.nl in rails 4.1
