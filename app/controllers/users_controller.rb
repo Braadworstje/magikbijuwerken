@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   before_action :authorize, :except => [:index, :new, :create]
   
+  def index
+    @users = User.all
+    @vacancies = Vacancy.all
+  end
+
   def new
     @user = User.new(params[:id])
 
@@ -58,7 +63,9 @@ def destroy
   def create
     @user = User.new(user_params)
 
-    @user.qualities << Quality.find_by_id(params[:quality_id])
+    # @user.qualities << Quality.find_by_id(params[:quality_id])
+
+    @qualities = Quality.all
 
     if @user.save
       params[:quality_id].split(',').each do |id|
@@ -76,7 +83,38 @@ def destroy
   end
 
 
+def match(user)
+    @user = user
+    @vacancies = Vacancy.all
+    
+    @matchscore = {}
+    @matchscore.default = 0
 
+    @qualitiestotal = 0
+
+    @userqualities = []
+
+    @matchingqualities = {}
+
+    @user.qualities.each do |uqs|
+      @userqualities << uqs
+      @qualitiestotal += 1
+    end
+
+    @vacancies.each do |vt|
+        
+      @matchingqualities[vt] = []
+
+      vt.qualities.each do |q|
+        for userquality in @userqualities
+          if userquality == q
+            @matchscore[vt] += 1
+            @matchingqualities[vt] << q.quality
+          end
+        end
+      end
+    end
+  end
 private
 
 def user_params 

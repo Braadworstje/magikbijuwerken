@@ -1,74 +1,8 @@
-
 <% if current_user %>
-<div id="box_710px">
-<!-- CONTENT LEFT -->
-<div id="content_left">
-        <div id="profile">
-                <div id="profile_background"></div>
-                <div id="profile_picture"></div>
-                <a class="profile_name">
-                        <%= link_to current_user.last_name, current_user %>
-                </a>
-                <a class="profile_quote">
-                        <% current_user.qualities.each do |d| %>
-                        <%= d.quality %>
-                        <% end %>
-
-                </a>
-                <div id="profile_status"></div>
-        </div>
-
-        <div id="profile_menu">
-                <div class="box1">
-                        <div class="image"></div>
-                        <a> 4</a>
-                </div>
-                <div class="box2">
-                        <div class="image"></div>
-                        <a> 4</a>
-                </div>
-                <div class="box3">
-                        <div class="image"></div>
-                        <a> 4</a>
-                </div>
-        </div>      
-</div>
-<!-- END CONTENT LEFT -->
-
-
-<div id="content_right">
-        <ul>
-                <li>Home</li>
-                <li class="profile">
-                        <%= link_to'Profiel', current_user%>
-                        <div class="menu_icon"></div>
-                </li>
-                <li class="qualities">
-                        <a>Kwaliteiten</a>
-                        <div class="menu_icon"></div>
-                </li>
-                <li class="vacancies">
-                        <%= link_to "Vacatures", vacancies_path %>
-                        <div class="menu_icon"></div>
-                </li>
-                <li><%= link_to "Afmelden", signout_path, :method => :delete %></li>
-        </ul>
-</div>
-</div>
-
-
-
-<!-- END album beheer -->
-<!-- END content_right div-->
+<%= render :template => "users/show.html.erb" %>
 <% else %>
-
-
-<h4>Mag ik bij u werken is een website voor werkzoekenden.</h4>
-
+<h1>Mag ik bij u werken is een website voor werkzoekenden.</h1>
 <%= link_to "Log in", signin_path, class: "btn btn-large btn-success" %>
 <%= link_to "Registreren", signup_path, class: "btn btn-large btn-warning" %>
-
-
-
 
 <% end %>

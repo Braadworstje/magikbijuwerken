@@ -1,4 +1,3 @@
-<!-- MATCHBAR -->
 <div class="matchbar_710">
 <div class="match">
 </div>
@@ -6,38 +5,19 @@
 </div>
 <label>50% match</label>
 </div>
-<!-- MATCHBAR END -->
-
-<!-- BOX_710 | 
-    VACANCIE SELECT -->
-    <% @vacancies.each do |v| %>
-    <%= form_for(@user) do |f| %>
-
 <div class="box_710px">
-    <%= select_tag(:vacancy_id, options_for_select(@vacancies.collect{|v| [v.id] }.sort_by { |e| }), {:multiple => true, class: 'chosen-vacancy-select'}) %>
+<%= form_for(current_user) do |f| %>
+<%= select_tag(:vacancy_id, options_for_select(@vacancies.collect{|v| [v.title, v.id] }), {:multiple => true, class: 'chosen-vacancy-select'}) %>
 <%= f.submit "Toevoegen" %>
-    <div class="ch-item ch-img-1">
+<% end %>
+<div class="ch-item ch-img-1">
 <div class="ch-info">
 <div class="ch-info-back">
-
+<% @vacancies.each do |v| %>
 <h3><%= link_to v.title, v %></h3>
 <p><%= link_to "Vacature instellingen", edit_vacancy_path(v) %></p>
-</div>
-
- <!-- END VACANCY SELECT -->
-
-</div>
-</div>
-
-  
-
-<!-- END BOX_710 -->
-<!-- VACANCY_SELECT -->
-
-</div>
 <% end %>
-<% end %>
-
-<!-- END VACATURE -->
-<!-- FLIP EFFECT -->
-<!-- END FLIP EFFECT -->
+</div>
+</div>
+</div>
+</div>

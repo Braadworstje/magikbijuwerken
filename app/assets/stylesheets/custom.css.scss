@@ -172,6 +172,9 @@ body{
     }
     .box2{
       border-top: 5px solid #41b873;
+      padding:5px;
+      width: 100%;
+      text-align: auto;
     }
     .box3{
       border-top: 5px solid #f3cb2c;
@@ -572,6 +575,17 @@ img.picture{
   opacity: 1;
   pointer-events: auto;
 }
-
+.inhoud{
+  background: green;
+}
+.kolom_boven{
+  background: red;
+}
+.profiel{
+  background: blue;
+}
+.footer{
+background: yellow;
+}
 
 @import "bootstrap";

@@ -25,6 +25,7 @@ end
   def create 
   	@vacancy = Vacancy.create(vacancy_params)
 
+    @vacancies = Vacancy.all
   		if @vacancy.save
         params[:quality_id].split(',').each do |id|
           @vacancy.qualities << Quality.find(id)
@@ -37,6 +38,8 @@ end
 
     def update
     @vacancy = Vacancy.find(params[:id])
+
+    @vacancies = Vacancy.all
     if @vacancy.update_attributes(vacancy_params)
       flash[:success] = "Vacature geupdated"
       redirect_to @vacancy
@@ -60,5 +63,5 @@ end
 
 
 def vacancy_params
-params.require(:vacancy).permit(:title, :description, :vacancy_address, :id)
+params.require(:vacancy).permit(:title, :description, :vacancy_address, :id, :vacancy_id)
 end

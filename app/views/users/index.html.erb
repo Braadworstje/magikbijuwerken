@@ -1,25 +1,25 @@
-<div id="content_right">       
-<div class="box_710px">
-<div class="title">
-<a>Gegevens</a>
+
+<div class="col-md-2 column">
+    <div class="row">
+        <ul>
+        <li><%= current_user.first_name %></li>
+        <li><%= current_user.last_name %></li><br>
+        <li><%= link_to "Profiel bewerken", edit_path %></li><br>
+        <li><%= link_to "Afmelden", signout_path, :method => :delete %></li>
+        </ul>
+    </div>
 </div>
-</div><!-- END add_media -->
-<img class="picture" src="assets/clients/Jack Daniels/dummy1.jpg">
-<img class="picture" src="assets/clients/Jack Daniels/dummy2.jpg">
-<img class="picture" src="assets/clients/Jack Daniels/dummy3.jpg">
+            
+     
+<div class="col-md-12 column">
+    <div class="matchbar_710">
+        <div class="match">
+        </div>
+        <div class="matchbar_710BG">
+        </div>
+        <label>50% match</label>
+        <% render template: "vacancies/index.html.erb" %>
+    </div>
+  </div>
 
-</div>
 
-<b>Bijpassende vacatures</b><br>
-
-<% @matchscore |v| %>
-    <% if @matchscore[v] > 0 %>
-      <b>Functieomschrijving</b><br>
-     <li> <%= v.title %><br></li>
-
-      <b>Kwaliteitenscore</b><br>
-      <li><%= @matchscore[v] %> (<%= (@matchscore[v].to_f) /5 * 100 %> %)<br><br></li>
-    <% end %>
-    
-    
-    

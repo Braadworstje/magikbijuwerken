@@ -1,37 +1,51 @@
 
-<div id="content_left">
-<div id="profile">
-    <div id="profile_background"></div>
-    <div id="profile_picture"></div>
-        <a class="profile_name"><%= current_user.first_name %><%= current_user.last_name %></a>
-        <a class="profile_quote"><% current_user.qualities.each do |d| %>
-        <%= d.quality %>
-    </a>
-    <% end %>
-    <div id="profile_status">Test
-        <% @current_user.vacancies.each do |va| %>
-        <%= va.description %>
-        <%= @matchscore[va] %>
-        
-</div>
-        <% end %>
+            <% current_user.vacancies.each do |va| %>
 
-    
-    <div id="profile_menu">
-        <div class="box1">
-            <div class="image"></div>
-            <a> 4</a>
-        </div>
-            <div class="box2">
-            <div class="image"></div>
-            <a> 4</a>
-        </div>
-            <div class="box3">
-            <div class="image"></div>
-            <a> 4</a>
+
+<div class="col-md-12 column kolom_boven">
+    <div class="row clearfix">
+        <div class="col-md-2 column profiel">
+                <div id="profile_background"></div>
+                <p><%= current_user.first_name %><%= current_user.last_name %></p>
+            </div>
+        
+
+        <div class="col-md-10 column">
+            <nav class="navbar navbar-inverse" role="navigation">
+                <ul>
+                    <li><%= link_to "Mijn dashboard", current_user %></li>
+
+                    <li><%= link_to "Mijn vacatures", vacancies_path %></li>
+
+                    <li><%= link_to "Mijn sollicitaties" %></li>
+
+                    <li><%= link_to "Nieuws" %></li>
+
+                    <li><%= link_to "Uitloggen", signout_path, :method => :delete %></li>
+                </ul>
+            </nav>
         </div>
     </div>
+
+
+<div class="row clearfix">
+    <div class="col-md-12 column inhoud">
+    <table class="notified_vacancies" cellspacing="0" cellpadding="0">
+        <thead>
+            <tr>
+                <th colspan="2"><%= link_to "Sorteren A/Z" %></th>
+                <th colspan="2"><%= link_to "Sorteren %" %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= va.description %></td>
+                <td><%= @matchscore[va] %></td>
+                <td><%= link_to 'Vacature verwijderen', va, :confirm => 'Weet u het zeker?', :method => :delete %></td>
+            </tr>
+            <% end %> 
+        </tbody>
+    </table>
 </div>
-</div>
-</div> 
+    
 </div>

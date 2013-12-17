@@ -14,6 +14,7 @@ Project::Application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/vacancies', to: 'vacancies#index',    via: 'get'
+  match '/vacancies/destroy', to: 'vacancies#destroy', via: 'get'
   match '/vacancies/new', to: 'vacancies#new',  via: 'get'
   match 'vacancies/edit', to: 'vacancies#edit',  via: 'get'
   match '/users',       to: 'users#index',      via: 'get'
