@@ -1,0 +1,35 @@
+<%= render :partial => "users/profile" %>
+<%= render :partial => "users/nav" %>
+
+
+<div class="matchbar_710">
+	<div class="match">
+	</div>
+	<div class="matchbar_710BG">
+	</div>
+</div>
+<table class="vacancytable">
+	<tr>
+		<th><%= sortable("title", "naam") %></th>
+		<th><%= sortable("created_at", "datum") %></th>
+		<th><%= sortable("description", "aanbevolen") %></th>
+	</tr>
+	<% for v in @vacancies %>
+		<tr>
+			<td><%= link_to v.title, v %></td>
+			<td><%= v.created_at %></td>
+			<td><%= @matchscore[v] %></td>
+			<td><%= link_to "Vacature instellingen", edit_vacancy_path(v) %></td>
+    
+	<b>Matching qualities: </b><br>
+    <%= @matchingqualities[v].map(&:inspect).join(', ').gsub('"', '') %><br><br>
+	</tr>
+<% end %>
+</table>
+
+<b>Vacatures waarop ik gereageerd heb</b><br>
+<% @user.vacancies.each do |v| %>
+	<%= v.title %><br>
+	<%= @matchscore[v] %><br>
+<% end %>
+

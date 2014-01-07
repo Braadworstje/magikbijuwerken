@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titel: MyString
+  description: MyString
+  vacancy_requirements: MyString
+  vacancy_region: MyString
+
+two:
+  titel: MyString
+  description: MyString
+  vacancy_requirements: MyString
+  vacancy_region: MyString

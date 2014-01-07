@@ -1,0 +1,12 @@
+
+<div class="content-right">
+	<div class="box_710px">
+		<h1>Vacature | <%= @vacancy.title %></h1><br>
+		<p>Omschrijving</p><p><%= @vacancy.description %></p><br>
+		<%= link_to 'Vacature verwijderen', @vacancy, :confirm => 'Weet u het zeker?', :method => :delete %> <br><br>
+		<%= link_to 'Reageren op deze vacature', :controller => "vacancies", :action => "apply_to_vacancy" %>
+	</div>
+</div>
+
+
+	

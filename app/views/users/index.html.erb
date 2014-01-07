@@ -1,0 +1,23 @@
+<div class="col-md-2 column">
+    <div class="row">
+        <ul>
+        <li><%= current_user.first_name %></li>
+        <li><%= current_user.last_name %></li><br>
+        <li><%= link_to "Profiel bewerken", edit_path %></li><br>
+        <li><%= link_to "Afmelden", signout_path, :method => :delete %></li>
+        </ul>
+    </div>
+</div>
+            
+     
+<div class="col-md-12 column">
+    <div class="matchbar_710">
+        <div class="match">
+        </div>
+        <div class="matchbar_710BG">
+        </div>
+        <label>50% match</label>
+        <% render template: "vacancies/index.html.erb" %>
+    </div>
+  </div>
+

@@ -1,0 +1,29 @@
+<div class="box_710px">
+  <h1>Registreer</h1>
+
+    <%= form_for @user, :html => {:multipart => true}  do |f| %>
+
+      <%= f.label "Naam" %>
+      <%= f.text_field :first_name %>
+
+      <%= f.label "Achternaam" %>
+      <%= f.text_field :last_name %>
+
+      <%= f.label "Email" %>
+      <%= f.text_field :email %>
+
+      <%= f.label "Wachtwoord" %>
+      <%= f.password_field :password %>
+
+      <%= f.label "Bevestig wachtwoord" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.label "Selecteer kwaliteiten" %>
+      <%= select_tag(:quality_id, options_for_select(@qualities.collect{ |q| [q.quality, q.id] }), {:multiple => true,  class: 'chosen-quality-select'}) %><br>
+
+      <%= f.label "Profielfoto uploaden" %>
+      <%= f.file_field :image %><br>
+
+      <%= f.submit "Registreren"  %>
+    <% end %>
+ 

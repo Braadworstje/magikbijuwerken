@@ -1,0 +1,72 @@
+
+
+<div class="row clearfix">
+    <%= render partial: "profile" %>
+    <div class="col-md-10 column">
+        <%= render partial: "nav" %>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                Welkom <%= current_user.first_name %> <%= current_user.last_name %>
+                <br/><br/>
+                Mag ik bij u werken heeft deze week maar liefst 15 deelnemers voorzien van een nieuwe baan!!
+            </div>
+        </div>
+        <div class="row">
+            <h4>Nieuwste aanbevolen vacatures</h4>
+            <% @vacancies.recent_vacancies.limit(3).each do |va| %>
+                <div class="col-md-4">
+                    <h4 class="media-heading">
+                        <%= va.title %> | <%= va.address %>
+                    </h4>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><%= @matchscore[va] %>
+
+                        <span class="sr-only"></span>
+
+                        </div>
+                        <%= @matchscore[va] %>%
+                    </div>
+                    <%= va.created_at.to_formatted_s(:short) %> <br />
+                    100km<br /><br />
+                    amount: <%= @matchingqualities[va].size %><br>
+                    total: <%= @qualitiestotal %><br><br>
+                    <%= @matchscore[va] %>%<br><br>
+    
+                        <b>Matching qualities: </b><br>
+                        <%= @matchingqualities[va].map(&:inspect).join(', ').gsub('"', '') %><br><br>
+						
+					<b> omschrijving </b>
+                    <%= va.description %>
+                </div>
+            <% end %>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <h4>Laatste nieuws</h4>
+                <h2>Hier komt nog nieuws</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <% if @user.admin == true %>
+	<% @vacancies.each do |vacancy| %>
+		<%= vacancy.title %><br>
+		<%= vacancy.description %><br>
+		<% vacancy.users.each do |user| %>
+			<b>first name: </b><%= user.first_name %><br>
+			<b>last name: </b><%= user.last_name %><br>
+			<b>email: </b><%= user.email %><br><br>
+		<% end%>
+	<% end %>
+
+<% end %>
+
+<div class="row clearfix">
+    <div class="col-md-12 column">
+        <h4><%= link_to "Over magikbijuwerken.nl"%> | 
+            <%= link_to "Veel gestelde vragen" %> | 
+            <%= link_to "Algemene voorwaarden" %> | 
+            <%= link_to "Contact" %></h4>
+    </div>
+</div>

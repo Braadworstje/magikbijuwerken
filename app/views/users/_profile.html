@@ -1,0 +1,10 @@
+    <div class="col-md-2 column">
+        <div id="profile_background"></div>
+        <div><%= image_tag(image_user_path(@user), :alt => "Profielfoto", :style => "width: 150px; height: 150px;") if @user.image? %></div>
+        <p><%= current_user.first_name %> <%= current_user.last_name %></p>
+        <% if (current_user.qualities.count > 3) %>
+            80%
+        <% else %>
+            Uw profiel is nog niet compleet
+        <% end %>
+    </div>

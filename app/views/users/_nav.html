@@ -1,0 +1,19 @@
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <nav class="navbar" role="navigation">
+                    <ul>
+                        <li><%= link_to "Mijn dashboard", current_user %></li>
+
+                        <li><%= link_to "Mijn vacatures", vacancies_path %></li>
+
+                        <li><%= link_to "Mijn nieuws" %></li>
+
+                        <li><%= link_to "Mijn sollicitaties" %></li>
+
+                        <li><%= link_to "Vragen" %></li>
+
+                        <li><%= link_to "Uitloggen", signout_path, :method => :delete %></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>

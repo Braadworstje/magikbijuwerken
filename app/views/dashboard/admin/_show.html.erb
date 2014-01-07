@@ -1,0 +1,16 @@
+<ul> 
+	<% @users.each do |user| %> 
+	    <%= user.email %> | <% if current_user.admin? %>
+		
+		<b>Deze gebruiker heeft gereageerd op</b>
+		<% user.vacancies.each do |vacancy| %>
+			<%= vacancy.title %>
+			<%= vacancy.description %>
+		<% end %>
+	      <%= link_to 'Delete', user_path(user), method: :delete, confirm: 'are you sure?' %> | 
+	      <%= link_to 'edit', edit_user_path(user), confirm: 'are you sure?' %> <br>
+	     <% end %>
+	<% end %>
+</ul>
+
+
