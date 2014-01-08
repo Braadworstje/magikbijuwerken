@@ -15,10 +15,10 @@ class User < ActiveRecord::Base
  has_secure_password
 
  has_many :users_qualities_skills
- has_many :qualities, through: :users_qualities_skills
- has_many :skills, through: :users_qualities_skills
+ has_many :qualities, through: :users_qualities_skills, :uniq => true
+ has_many :skills, through: :users_qualities_skills, :uniq => true
  has_many :user_vacancies
- has_many :vacancies, through: :user_vacancies
+ has_many :vacancies, through: :user_vacancies, :uniq => true
 
  accepts_nested_attributes_for :user_vacancies, :vacancies
  accepts_nested_attributes_for :users_qualities_skills, :qualities

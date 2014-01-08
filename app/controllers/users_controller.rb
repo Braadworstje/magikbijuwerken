@@ -76,6 +76,10 @@ class UsersController < ApplicationController
     send_file "#{@user.image_url}", :disposition => 'inline', :x_sendfile => true
   end
 
+  def applications
+    @user = User.find_by_id(current_user)
+  end
+
   private
 
   def user_params 

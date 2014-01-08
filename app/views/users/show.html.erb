@@ -1,9 +1,10 @@
-
-
 <div class="row clearfix">
     <%= render partial: "profile" %>
     <div class="col-md-10 column">
         <%= render partial: "nav" %>
+		<% if ((current_user.admin != true) && (@user.id != current_user.id))%>
+			<h1> ACCESS DENIED LOSER </h1>
+		<% else %>
         <div class="row clearfix">
             <div class="col-md-12 column">
                 Welkom <%= current_user.first_name %> <%= current_user.last_name %>
@@ -46,10 +47,11 @@
                 <h2>Hier komt nog nieuws</h2>
             </div>
         </div>
+		<% end %>
     </div>
 </div>
 
- <% if @user.admin == true %>
+ <% if current_user.admin == true %>
 	<% @vacancies.each do |vacancy| %>
 		<%= vacancy.title %><br>
 		<%= vacancy.description %><br>

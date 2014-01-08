@@ -1,5 +1,7 @@
-<%= render :partial => "users/profile" %>
-<%= render :partial => "users/nav" %>
+<div class="row clearfix">
+    <%= render partial: "users/profile" %>
+    <div class="col-md-10 column">
+        <%= render partial: "users/nav" %>
 
 
 <div class="matchbar_710">
@@ -33,3 +35,5 @@
 	<%= @matchscore[v] %><br>
 <% end %>
 
+	</div>
+</div>

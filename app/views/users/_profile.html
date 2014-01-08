@@ -1,6 +1,12 @@
+<% if current_user.admin? %>
+	<div class="col-md-2 column">
+   		<div id="profile_background"></div>
+		<p>Ingelogd als admin</p>
+	</div>
+<% else %>
     <div class="col-md-2 column">
         <div id="profile_background"></div>
-        <div><%= image_tag(image_user_path(@user), :alt => "Profielfoto", :style => "width: 150px; height: 150px;") if @user.image? %></div>
+        <div><%= image_tag(image_user_path(current_user), :alt => "Profielfoto", :style => "width: 150px; height: 150px;") if current_user.image? %></div>
         <p><%= current_user.first_name %> <%= current_user.last_name %></p>
         <% if (current_user.qualities.count > 3) %>
             80%
@@ -8,3 +14,4 @@
             Uw profiel is nog niet compleet
         <% end %>
     </div>
+<% end %>

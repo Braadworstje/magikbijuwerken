@@ -1,0 +1,14 @@
+
+        Vacature wijzigen
+
+                <%= form_for(@news)  do |n| %>
+
+                <%= n.text_field :title %>
+                <br>
+                <%= n.text_field :content, :class => "form-control", :required => "required" %>
+                <br>
+				
+               <%= n.submit %>
+        <% end %> 
+        </div>
+</div>

@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131219131917) do
+ActiveRecord::Schema.define(version: 20140108112151) do
+
+  create_table "news", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "qualities", force: true do |t|
     t.string   "quality"
@@ -49,6 +56,7 @@ ActiveRecord::Schema.define(version: 20131219131917) do
     t.string   "municipal"
     t.string   "pdf"
     t.string   "cv"
+    t.boolean  "accepted",         default: false
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"

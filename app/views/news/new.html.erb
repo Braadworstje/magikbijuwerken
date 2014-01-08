@@ -1,0 +1,15 @@
+<div class="panel panel-primary">
+        <div class="panel-heading">
+        Nieuwsbericht plaatsen
+        </div>
+        <div class="panel-body">
+                <%= form_for(@news)  do |n| %>
+
+                <%= n.text_field :title, :placeholder => "Nieuws titel" %>
+                <br>
+                <%= n.text_area :content, :placeholder => "Inhoud nieuwsbericht", :class => "form-control", :required => "required" %>
+
+               <button class="btn btn-large btn-warning" n.submit>Plaats bericht</button>
+        <% end %> 
+        </div>
+</div>

@@ -8,6 +8,7 @@ Project::Application.routes.draw do
     get 'apply_to_vacancy', on: :member
   end
   resources :qualities
+  resources :news
 
   root 'static_pages#_home'
 
@@ -21,8 +22,9 @@ Project::Application.routes.draw do
   match '/vacancies', to: 'vacancies#index',    via: 'get'
   match '/vacancies/destroy', to: 'vacancies#destroy', via: 'get'
   match '/vacancies/new', to: 'vacancies#new',  via: 'get'
-  match 'vacancies/edit', to: 'vacancies#edit',  via: 'get'
+  match '/vacancies/edit', to: 'vacancies#edit',  via: 'get'
   match '/users',       to: 'users#index',      via: 'get'
+  match '/applications', to: 'users#applications',  via: 'get'
 
   get "users/new"
   get "users/index"

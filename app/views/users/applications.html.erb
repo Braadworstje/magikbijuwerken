@@ -1,0 +1,27 @@
+<div class="row clearfix">
+    <%= render partial: "profile" %>
+    <div class="col-md-10 column">
+        <%= render partial: "nav" %>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <h3>Hier vindt u alle vacatures waarop u gereageerd heeft</h3>
+            </div>
+        </div>
+        <div class="row">
+            <h4>Uw reacties</h4>
+			<% @user.vacancies.each do |v| %>
+				<%= link_to v.title, v %><br>
+				<%= v.description %><br><br>
+			<% end %>
+        </div>
+    </div>
+</div>
+
+<div class="row clearfix">
+    <div class="col-md-12 column">
+        <h4><%= link_to "Over magikbijuwerken.nl" %> | 
+            <%= link_to "Veel gestelde vragen" %> | 
+            <%= link_to "Algemene voorwaarden" %> | 
+            <%= link_to "Contact" %></h4>
+    </div>
+</div>
