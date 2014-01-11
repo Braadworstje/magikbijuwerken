@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
       @matchscore[va] = @matchingqualities[va].size.to_f / @qualitiestotal.to_f * 100.0
     end
   end
-
+  
  private
  
  def user_logged_in!
@@ -71,5 +71,6 @@ end
   def admin?
     if current_user && current_user.admin?
   end
+
 end
 

@@ -25,6 +25,12 @@ Project::Application.routes.draw do
   match '/vacancies/edit', to: 'vacancies#edit',  via: 'get'
   match '/users',       to: 'users#index',      via: 'get'
   match '/applications', to: 'users#applications',  via: 'get'
+  match '/admin/stats', to: 'admin#stats', via: 'get'
+  match '/admin/pages', to: 'admin#pages', via: 'get'
+  match '/admin/replies', to: 'admin#replies', via: 'get'
+  match '/admin/vacancies', to: 'admin#vacancies', via: 'get'
+  match '/admin/users', to: 'admin#users', via: 'get'
+  match '/admin/qualities', to: 'admin#qualities', via: 'get'
 
   get "users/new"
   get "users/index"

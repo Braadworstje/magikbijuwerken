@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140108112151) do
+ActiveRecord::Schema.define(version: 20140109095537) do
 
   create_table "news", force: true do |t|
     t.string   "title"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20140108112151) do
     t.integer  "vacancy_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "finished",   default: false
   end
 
   create_table "users", force: true do |t|
@@ -57,6 +58,8 @@ ActiveRecord::Schema.define(version: 20140108112151) do
     t.string   "pdf"
     t.string   "cv"
     t.boolean  "accepted",         default: false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
@@ -78,6 +81,8 @@ ActiveRecord::Schema.define(version: 20140108112151) do
     t.string   "requirements"
     t.string   "address"
     t.string   "image"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "vacancies_qualities_skills", force: true do |t|

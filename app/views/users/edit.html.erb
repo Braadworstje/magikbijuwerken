@@ -78,6 +78,11 @@
                 <%= f.label :password_confirmation %><br>
                 <%= f.password_field :password_confirmation %>
               </div>
+			  
+			  <div class = "field">
+				  <%= f.label :accepted %><br>
+				  <%= f.check_box :accepted %>
+			  </div>
             <%= f.submit "Registreren", class: "btn btn-large btn-warning" %>
           <% end %>
     </div>

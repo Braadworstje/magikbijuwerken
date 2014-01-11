@@ -1,0 +1,17 @@
+<div class="row clearfix">
+	<%= render partial: "admin/profile" %>
+	<div class="col-md-10 column">
+		<%= render partial: "admin/nav" %>
+	</div>
+</div>
+
+<div>
+        Kwaliteit wijzigen
+
+        <%= form_for(@quality)  do |q| %>
+
+                <%= q.text_field :quality, :placeholder => "Kwaliteit", :required => "required" %>
+				
+               <%= q.submit %>
+        <% end %>
+</div>

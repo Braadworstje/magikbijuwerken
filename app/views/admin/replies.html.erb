@@ -1,0 +1,29 @@
+<div class="row clearfix">
+	<%= render partial: "admin/profile" %>
+	<div class="col-md-10 column">
+		<%= render partial: "admin/nav" %>
+	</div>
+</div>
+<div class="row">
+
+	<% @users.each do |u| %>
+	
+		
+	
+		<b><%= link_to (u.first_name + " " + u.last_name), u %></b>
+	
+		<% if u.vacancies.count > 0 %>
+		<p>heeft gereageerd op de volgende vacatures: </p>
+		
+			<% u.vacancies.each do |v|%>
+				
+				<%= link_to v.title, v %><br>
+				<%= v.description %><br><br>
+			
+			<% end %>
+			
+		<% else %>
+		<p>heeft nog niet gereageerd op een vacature</p>
+		<% end %>
+	<% end %>
+</div>

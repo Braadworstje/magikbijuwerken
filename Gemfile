@@ -8,6 +8,7 @@ gem 'pg', '0.17.1'
 gem 'chosen-rails'
 gem 'compass-rails', github: 'Compass/compass-rails'
 gem 'carrierwave'
+gem 'geocoder'
 
 group :development, :test do
    gem 'sqlite3'

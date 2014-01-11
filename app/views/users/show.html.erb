@@ -12,6 +12,7 @@
                 Mag ik bij u werken heeft deze week maar liefst 15 deelnemers voorzien van een nieuwe baan!!
             </div>
         </div>
+		
         <div class="row">
             <h4>Nieuwste aanbevolen vacatures</h4>
             <% @vacancies.recent_vacancies.limit(3).each do |va| %>
@@ -27,8 +28,14 @@
                         </div>
                         <%= @matchscore[va] %>%
                     </div>
-                    <%= va.created_at.to_formatted_s(:short) %> <br />
-                    100km<br /><br />
+                    <%= va.created_at.to_formatted_s(:short) %> <br>
+					
+					<% if @user.latitude != nil %>
+                  	  <b><%= va.distance_from([@user.latitude, @user.longitude]).to_f.round %> km</b><br>
+					<% else %>
+						<b>Gebruiker heeft geen plaats opgegeven</b><br>
+					<% end %>
+						
                     amount: <%= @matchingqualities[va].size %><br>
                     total: <%= @qualitiestotal %><br><br>
                     <%= @matchscore[va] %>%<br><br>

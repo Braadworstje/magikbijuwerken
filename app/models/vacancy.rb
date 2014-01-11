@@ -7,4 +7,8 @@ class Vacancy < ActiveRecord::Base
 	has_many :users, through: :user_vacancies, :uniq => true
 
 	scope :recent_vacancies, -> { order('created_at desc') }
+  
+  geocoded_by :address
+  after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
+  
 end

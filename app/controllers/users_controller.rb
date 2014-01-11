@@ -4,6 +4,12 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @vacancies = Vacancy.all
+    
+    if current_user.admin?
+      @acceptedusers = User.where(accepted: true)
+      @openusers = User.where(accepted: false)
+    end
+    
     match(current_user)
   end
 
@@ -79,15 +85,16 @@ class UsersController < ApplicationController
   def applications
     @user = User.find_by_id(current_user)
   end
-
+   
+end
+   
   private
-
+  
   def user_params 
     params.require(:user).permit(
-       :email, :password, :password_confirmation, :admin, :first_name, :last_name, :quality_id, :vacancy_id, :quality_ids, :vacancy_ids, 
-       :image, :remove_image, :municipal, :cv, :remove_cv, {:qualities_attributes => [:quality]}, {:vacancies_attributes => [:description]})
+       :email, :password, :password_confirmation, :admin, :accepted, :first_name, :last_name, :quality_id, :vacancy_id, :quality_ids, :vacancy_ids, 
+       :image, :remove_image, :municipal, :cv, :remove_cv, :gender, :address, :latitude, :longitude, {:qualities_attributes => [:quality]}, {:vacancies_attributes => [:description]})
   end
-end
 
 #def person_params
  #    params.require(:person).permit(:name, :age)

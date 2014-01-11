@@ -1,0 +1,22 @@
+<div class="row clearfix">
+	<%= render partial: "admin/profile" %>
+	<div class="col-md-10 column">
+		<%= render partial: "admin/nav" %>
+	</div>
+</div>
+
+<%= link_to "Nieuwe vacature aanmaken", new_quality_path %>
+		<table class="vacancies">
+			<div class = "sort">
+				<b><%= sortable("quality", "naam") %></b>
+				<b><%= sortable("created_at", "datum") %></b>
+			</div>
+			<% for q in @qualities %>
+				<div>
+					<%= q.quality %>
+					<%= q.created_at.to_formatted_s(:day_month_year) %>
+					<%= link_to "aanpassen", edit_quality_path(q) %>
+					<%= link_to 'verwijderen', q, :confirm => 'Weet u het zeker?', :method => :delete %> <br><br>
+				</div>
+			<% end %>
+		</table>

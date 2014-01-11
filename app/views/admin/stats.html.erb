@@ -1,0 +1,22 @@
+<div class="row clearfix">
+	<%= render partial: "admin/profile" %>
+	<div class="col-md-10 column">
+		<%= render partial: "admin/nav" %>
+		
+		<div>
+			<h3>Niet geaccepteerde gebruikers</h3>
+			<b><%= @openusers.count %></b>
+		</div>
+		
+		<div>
+			<h3>Geaccepteerde gebruikers</h3>
+			<b><%= @acceptedusers.count %></b>
+		</div>
+		
+		
+		<div>
+			<h3>Alle gebruikers</h3>
+			<b></b>
+		</div>
+	</div>
+</div>

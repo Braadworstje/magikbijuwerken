@@ -1,13 +1,15 @@
 <div class="row clearfix">
-    <%= render partial: "users/profile" %>
+    <%= render partial: "admin/profile" %>
     <div class="col-md-10 column">
-        <%= render partial: "users/nav" %>
+        <%= render partial: "admin/nav" %>
 		<div class="matchbar_710">
 			<div class="match">
 			</div>
 			<div class="matchbar_710BG">
 			</div>
 		</div>
+		
+		<%= link_to "Nieuwe vacature aanmaken", new_vacancy_path %>
 		<table class="vacancies">
 			<div class = "sort">
 				<b><%= sortable("title", "naam") %></b>
@@ -16,20 +18,11 @@
 			</div>
 			<% for v in @vacancies %>
 				<div>
-					<h3><%= link_to v.title, v %> | <%= v.address %> </h3>
-					
-					<% if current_user.latitude != nil %>
-						<b><%= v.distance_from([current_user.latitude, current_user.longitude]).to_f.round %> km</b>
-					<% else %>
-						<b>U heeft nog geen plaats ingevuld</b>
-					<% end %>
+					<%= link_to v.title, v %> | <%= v.address %>
 					<%= v.created_at.to_formatted_s(:day_month_year) %>
-					<%= @matchscore[v] if !current_user.admin? %>
-			
-    
-					passende kwaliteiten<br>
-		    		<%= @matchingqualities[v].map(&:inspect).join(', ').gsub('"', '') %></p>
-			
+					<b>gereageerd: <%= v.users.count %>x</b>
+					<%= link_to "aanpassen", edit_vacancy_path(v) %>
+					<%= link_to 'verwijderen', v, :confirm => 'Weet u het zeker?', :method => :delete %> <br><br>
 				</div>
 			<% end %>
 		</table>

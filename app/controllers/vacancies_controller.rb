@@ -40,7 +40,7 @@ class VacanciesController < ApplicationController
       params[:quality_id].split(',').each do |id|
         @vacancy.qualities << Quality.find(id)
       end
-      redirect_to vacancies_path, notice: 'Vacature geplaatst!'
+      redirect_to admin_vacancies_path, notice: 'Vacature geplaatst!'
     else
       render action: "new"
     end
@@ -62,16 +62,12 @@ class VacanciesController < ApplicationController
     @vacancy = Vacancy.find(params[:id])
     flash[:notice] = "Vacancy deleted" 
     @vacancy.destroy
-    redirect_to @vacancy
+    redirect_to admin_vacancies_path
   end
 end
 
-def user_params
-  params.require(:id)
-end
-
 def vacancy_params
-  params.require(:vacancy).permit(:title, :description, :vacancy_address, :id, :vacancy_id, :sort, :direction, :sort_column, :sort_direction) 
+  params.require(:vacancy).permit(:title, :description, :address, :requirements, :name, :id, :vacancy_id, :sort, :direction, :sort_column, :sort_direction, :latitude, :longitude) 
 end
 
 private

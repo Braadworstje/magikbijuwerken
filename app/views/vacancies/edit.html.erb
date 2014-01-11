@@ -2,16 +2,25 @@
         Vacature wijzigen
 
                 <%= form_for(@vacancy)  do |n| %>
-
+				
+				<%= n.label :name,  "Bedrijfsnaam" %>
+                <%= n.text_field :name, :placeholder => "Bedrijfsnaam" %>
+                <br>
+				<%= n.label :title,  "Vacature titel" %>
                 <%= n.text_field :title, :placeholder => "Vacature titel" %>
                 <br>
-                <%= n.text_field :description, :placeholder => "Beschrijving", :class => "form-control", :required => "required" %>
+				<%= n.label :description, "Vacature omschrijving" %>
+                <%= n.text_field :description, :placeholder => "Vacature omschrijving", :class => "form-control", :required => "required" %>
                 <br>
+				<%= n.label :requirements, "Functieeisen" %>
                 <%= n.text_field :requirements, :placeholder => "Functie omschrijving", :class => "form-control", :required => "required" %>
                 <br>
+				<%= n.label :address, "Plaats" %>
                 <%= n.text_field :address, :placeholder => "Plaats", :class => "form-control", :required => "required" %>
-
-               <%= n.submit %>
+               
+			   <%= n.submit %>
+			   
+			   <%= link_to_function "Back", "history.back()" %>
         <% end %> 
         </div>
 </div>

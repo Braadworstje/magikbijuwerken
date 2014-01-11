@@ -4,7 +4,9 @@
         </div>
         <div class="panel-body">
                 <%= form_for(@vacancy)  do |n| %>
-
+				
+				<%= n.text_field :name, :placeholder => "Bedrijfsnaam"%>
+				<br>
                 <%= n.text_field :title, :placeholder => "Vacature titel" %>
                 <br>
                 <%= n.text_field :description, :placeholder => "Beschrijving", :class => "form-control", :required => "required" %>

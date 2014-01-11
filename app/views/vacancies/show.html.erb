@@ -6,9 +6,17 @@
 
 <div class="content-right">
 	<div class="box_710px">
-		<h1>Vacature | <%= @vacancy.title %></h1><br>
-		<p>Omschrijving</p><p><%= @vacancy.description %></p><br>
-		<%= link_to 'Vacature verwijderen', @vacancy, :confirm => 'Weet u het zeker?', :method => :delete %> <br><br>
+		<h1><%= @vacancy.title %> | <%= @vacancy.address %></h1><br>
+		
+		<b>Geplaatst op: </b><%= @vacancy.created_at %><br>
+		<% if current_user.latitude != nil %>
+			<b>Afstand: </b><%= @vacancy.distance_from([current_user.latitude, current_user.longitude]).to_f.round %> km<br>
+		<% else %>
+			<b>U heeft nog geen plaats ingevuld</b>
+		<% end %>
+		
+		<p><%= @vacancy.description %></p><br><br>
+		
 		<%= link_to 'Reageren op deze vacature', :controller => "vacancies", :action => "apply_to_vacancy" %>
 	</div>
 </div>

@@ -1,5 +1,13 @@
 class AddPasswordDigestToUsers < ActiveRecord::Migration
   def change
-    add_column :users, :password_digest, :string
+    change_table :users do |t|
+      t.add :latitude, :float
+      t.add :longitude, :float
+    end
+    
+    change_table :vacancies do |t|
+      t.add :latitude, :float
+      t.add :longitude, :float
+    end
   end
 end
