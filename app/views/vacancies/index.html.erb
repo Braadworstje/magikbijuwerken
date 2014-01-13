@@ -19,15 +19,15 @@
 					<h3><%= link_to v.title, v %> | <%= v.address %> </h3>
 					
 					<% if current_user.latitude != nil %>
-						<b><%= v.distance_from([current_user.latitude, current_user.longitude]).to_f.round %> km</b>
+						<b><%= v.distance_from([current_user.latitude, current_user.longitude]).to_f.round %> km</b><br>
 					<% else %>
-						<b>U heeft nog geen plaats ingevuld</b>
+						<b>U heeft nog geen plaats ingevuld</b><br>
 					<% end %>
-					<%= v.created_at.to_formatted_s(:day_month_year) %>
-					<%= @matchscore[v] if !current_user.admin? %>
+					<%= v.created_at.to_formatted_s(:day_month_year) %><br>
+					Matchscore: <%= @matchscore[v] if !current_user.admin? %>%<br>
 			
     
-					passende kwaliteiten<br>
+					<b>Bijpassende kwaliteiten: </b><% if @matchingqualities[v].count == 0 %>GEEN<% end %>
 		    		<%= @matchingqualities[v].map(&:inspect).join(', ').gsub('"', '') %></p>
 			
 				</div>

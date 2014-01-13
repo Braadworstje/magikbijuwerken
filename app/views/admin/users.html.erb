@@ -4,61 +4,74 @@
 		<%= render partial: "admin/nav" %>
 		
 		<div>
-			<h3>Niet geaccepteerde gebruikers</h3>
-			<ul>
-				<% @openusers.each do |u| %>
-				<li><%= u.first_name %></li>
-				<li><%= u.last_name %></li><br>
+			<h3>Werkzoekenden in wachtrij</h3>
+			
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th><%= sortable("first_name", "naam") %></th>
+						<th><%= sortable("created_at", "naam") %></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @openusers.each do |u| %>
+						<tr>
+							<td>Naam: <%= u.first_name %> <%= u.last_name %><br>
+								Tel: <%= u.telephone_number %><br>
+								Email: <%= u.email %></td>
+							<td>	
+							    <% if u.accepted? %>
+							    	<p>status: actieve gebruiker</p>
+							    <% else %>
+							    	<p>status: in wachtrij</p>
+								<% end %>
+							</td>
+							
+							<td>
+								Gemeente: <%= u.municipal %>
+							</td>
 				
-			    <% if u.accepted? %>
-			    	<li><p>status: geaccepteerde gebruiker</p></li>
-			    <% else %>
-			    	<li><p>status: nog niet geaccepteerde gebruiker</p></li>
+							<td><%= link_to "Profiel bewerken", edit_user_path(u) %><br>
+								<%= link_to "Afmelden", signout_path, :method => :delete %></td>
+						</tr>
 				<% end %>
-				
-				<li><%= link_to "Profiel bewerken", edit_user_path(u) %></li><br>
-				<li><%= link_to "Afmelden", signout_path, :method => :delete %></li>
-				<% end %>
-			</ul>
-		</div>
+			</tbody>
+		</table>
 		
 		<div>
-			<h3>Geaccepteerde gebruikers</h3>
-			<ul>
-				<% @acceptedusers.each do |u| %>
-				<li><%= u.first_name %></li>
-				<li><%= u.last_name %></li><br>
+			<h3>Actieve werkzoekenden</h3>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th><%= sortable("first_name", "naam") %></th>
+						<th><%= sortable("created_at", "naam") %></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @acceptedusers.each do |u| %>
+						<tr>
+							<td>Naam: <%= u.first_name %> <%= u.last_name %><br>
+								Tel: <%= u.telephone_number %><br>
+								Email: <%= u.email %></td>
+							<td>	
+							    <% if u.accepted? %>
+							    	<p>status: actieve gebruiker</p>
+							    <% else %>
+							    	<p>status: in wachtrij</p>
+								<% end %>
+							</td>
+							
+							<td>
+								Gemeente: <%= u.municipal %>
+							</td>
 				
-			    <% if u.accepted? %>
-			    	<li><p>status: geaccepteerde gebruiker</p></li>
-			    <% else %>
-			    	<li><p>status: nog niet geaccepteerde gebruiker</p></li>
+							<td><%= link_to "Profiel bewerken", edit_user_path(u) %><br>
+								<%= link_to "Afmelden", signout_path, :method => :delete %></td>
+						</tr>
 				<% end %>
-				
-				<li><%= link_to "Profiel bewerken", edit_user_path(u) %></li><br>
-				<li><%= link_to "Afmelden", signout_path, :method => :delete %></li>
-				<% end %>
-			</ul>
-		</div>
+			</tbody>
+		</table>
 		
-		
-		<div>
-			<h3>Alle gebruikers</h3>
-			<ul>
-				<% @users.each do |u| %>
-				<li><%= u.first_name %></li>
-				<li><%= u.last_name %></li><br>
-				
-			    <% if u.accepted? %>
-			    	<li><p>status: geaccepteerde gebruiker</p></li>
-			    <% else %>
-			    	<li><p>status: nog niet geaccepteerde gebruiker</p></li>
-				<% end %>
-				
-				<li><%= link_to "Profiel bewerken", edit_user_path(u) %></li><br>
-				<li><%= link_to "Afmelden", signout_path, :method => :delete %></li>
-				<% end %>
-			</ul>
 		</div>
 	</div>
 </div>

@@ -10,21 +10,27 @@
 		</div>
 		
 		<%= link_to "Nieuwe vacature aanmaken", new_vacancy_path %>
-		<table class="vacancies">
-			<div class = "sort">
-				<b><%= sortable("title", "naam") %></b>
-				<b><%= sortable("created_at", "datum") %></b>
-				<b><%= sortable("description", "aanbevolen") if !current_user.admin? %></b>
-			</div>
-			<% for v in @vacancies %>
-				<div>
-					<%= link_to v.title, v %> | <%= v.address %>
-					<%= v.created_at.to_formatted_s(:day_month_year) %>
-					<b>gereageerd: <%= v.users.count %>x</b>
-					<%= link_to "aanpassen", edit_vacancy_path(v) %>
-					<%= link_to 'verwijderen', v, :confirm => 'Weet u het zeker?', :method => :delete %> <br><br>
-				</div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th><b><%= sortable("created_at", "datum") %></b></th>
+					<th><b><%= sortable("title", "naam") %></b></th>
+					<th><b><%= sortable("name", "bedrijf") %></b></th>
+				</tr>
+			</thead>
+				
+				
+			<tbody>
+				<% for v in @vacancies %>
+				<tr>
+					<td><%= v.created_at.to_formatted_s(:day_month_year) %></td>
+					<td><%= link_to v.title, v %> | <%= v.address %></td>
+					<td><%= v.name %></td>
+					<td><%= link_to "aanpassen", edit_vacancy_path(v) %></td>
+					<td><%= link_to 'verwijderen', v, :confirm => 'Weet u het zeker?', :method => :delete %> </td>
+				</tr>
 			<% end %>
+		</tbody>
 		</table>
 	</div>
 </div>

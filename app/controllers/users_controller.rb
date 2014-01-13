@@ -24,6 +24,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
+    @news = News.all
+    
     match(@user)
     respond_to do |format|
       format.html # show.html.erb
@@ -89,12 +91,6 @@ class UsersController < ApplicationController
 end
    
   private
-  
-  def user_params 
-    params.require(:user).permit(
-       :email, :password, :password_confirmation, :admin, :accepted, :first_name, :last_name, :quality_id, :vacancy_id, :quality_ids, :vacancy_ids, 
-       :image, :remove_image, :municipal, :cv, :remove_cv, :gender, :address, :latitude, :longitude, {:qualities_attributes => [:quality]}, {:vacancies_attributes => [:description]})
-  end
 
 #def person_params
  #    params.require(:person).permit(:name, :age)

@@ -5,18 +5,28 @@
 	</div>
 </div>
 
+<div class="span3">
+</div>
+<div class="span6">
 <%= link_to "Nieuwe vacature aanmaken", new_quality_path %>
-		<table class="vacancies">
-			<div class = "sort">
-				<b><%= sortable("quality", "naam") %></b>
-				<b><%= sortable("created_at", "datum") %></b>
-			</div>
-			<% for q in @qualities %>
-				<div>
-					<%= q.quality %>
-					<%= q.created_at.to_formatted_s(:day_month_year) %>
-					<%= link_to "aanpassen", edit_quality_path(q) %>
-					<%= link_to 'verwijderen', q, :confirm => 'Weet u het zeker?', :method => :delete %> <br><br>
-				</div>
-			<% end %>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th><%= sortable("quality", "naam") %></th>
+					<th><%= sortable("created_at", "datum") %></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% for q in @qualities %>
+					<tr>
+						<td><%= q.quality %></td>
+						<td><%= q.created_at.to_formatted_s(:day_month_year) %></td>
+						<td><%= link_to "aanpassen", edit_quality_path(q) %></td>
+						<td><%= link_to 'verwijderen', q, :confirm => 'Weet u het zeker?', :method => :delete %></td>
+					</tr>
+				<% end %>
+			</tbody>
 		</table>
+</div>
+<div class="span3">
+</div>

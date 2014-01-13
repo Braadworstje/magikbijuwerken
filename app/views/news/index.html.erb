@@ -4,8 +4,8 @@
         <%= render partial: "users/nav" %>
 
 <% for n in @news %>
-	<h1><%= n.title %></h1>
-	<b><%= n.created_at %></b>
+	<h3><%= n.title %></h3>
+	<b><%= n.created_at.to_formatted_s(:day_month_year) %></b>
 	<%
 		str = n.content
 		first_100_words = str.split(" ").first(100).join(" ")

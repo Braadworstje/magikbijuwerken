@@ -5,25 +5,84 @@
 	</div>
 </div>
 <div class="row">
-
-	<% @users.each do |u| %>
+	<h2> Gebruikers </h2>
 	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th><%= sortable("created_at", "datum") %></th>
+				<th><%= sortable("title", "naam") %></th>
+				<th>status</th>
+				<th>functie</th>
+			</tr>
+		</thead>
+		<tdody>
+			<% @users.each do |u| %>
 		
-	
-		<b><%= link_to (u.first_name + " " + u.last_name), u %></b>
-	
-		<% if u.vacancies.count > 0 %>
-		<p>heeft gereageerd op de volgende vacatures: </p>
+				<% if u.vacancies.count > 0 %>
 		
-			<% u.vacancies.each do |v|%>
+					<% u.vacancies.each do |v| %>
+						<tr>
+							<td><%= v.created_at.to_formatted_s(:day_month_year) %></td>
+					
+							<td>Naam: </b><%= link_to (u.first_name + " " + u.last_name), u %><br>
+							Tel: <%= u.telephone_number %><br>
+							Email: <%= u.email %></td>
 				
-				<%= link_to v.title, v %><br>
-				<%= v.description %><br><br>
-			
+							<td>heeft gereageerd op: </td>
+		
+							<td>Bedrijf: <%= link_to v.name, v %><br>
+							Functie: <%= link_to v.title, v %><br>
+							Tel: <%= v.telephone_number %><br>
+							Email: <%= v.email %></td>
+						</tr>
+						<% end %>
+				<% else %>
+					<tr>
+							<td><%= u.created_at.to_formatted_s(:day_month_year) %></td>
+							<td>Naam: <%= link_to (u.first_name + " " + u.last_name), u %><br>
+							Tel: <%= u.telephone_number %><br>
+							Email: <%= u.email %></td>
+				
+							<td>heeft nog niet gereageerd op een vacature</td>
+							<td> -- </td>
+					</tr>	
+				<% end %>
 			<% end %>
+		</tdody>
+	</table>
+</div>
+
+<div class="row">
+	<h2> Bedrijven </h2>
+	<% @vacancies.each do |v| %>
+	
+		<% if v.users.count > 0 %>
 			
+			<% v.users.each do |u| %>
+				<div>
+					<i><%= u.created_at.to_formatted_s(:day_month_year) %></i><br><br>
+				
+					<b>Bedrijf: </b><%= link_to v.name, v %><br>
+					<b>Functie: </b><%= link_to v.title, v %><br>
+					<b>Tel: </b><%= v.telephone_number %><br>
+					<b>Email: </b><%= v.email %>
+				
+					<p>is gereageerd op door: </p>
+				
+					<b>Naam: </b><%= link_to (u.first_name + " " + u.last_name), u %><br>
+					<b>Tel: </b><%= u.telephone_number %><br>
+					<b>Email: </b><%= u.email %><br>
+				</div>
+			<% end %>
 		<% else %>
-		<p>heeft nog niet gereageerd op een vacature</p>
+			<b>Bedrijf: </b><%= link_to v.name, v %><br>
+			<b>Functie: </b><%= link_to v.title, v %><br>
+			<b>Tel: </b><%= v.telephone_number %><br>
+			<b>Email: </b><%= v.email %>
+			
+			<p>is nog niet op gereageerd door een gebruiker</p>
 		<% end %>
+	
 	<% end %>
 </div>

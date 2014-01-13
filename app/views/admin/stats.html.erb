@@ -3,20 +3,37 @@
 	<div class="col-md-10 column">
 		<%= render partial: "admin/nav" %>
 		
+		<h2>Werkzoekenden</h2>
 		<div>
-			<h3>Niet geaccepteerde gebruikers</h3>
-			<b><%= @openusers.count %></b>
-		</div>
-		
-		<div>
-			<h3>Geaccepteerde gebruikers</h3>
+			<h3>Actief</h3>
 			<b><%= @acceptedusers.count %></b>
 		</div>
 		
+		<div>
+			<h3>Wachtrij</h3>
+			<b><%= @openusers.count %></b>
+		</div>
+		
+		<h2>Sollicitaties</h2>
+		<div>
+			<h3>Verwerkt</h3>
+			<b></b>
+		</div>
 		
 		<div>
-			<h3>Alle gebruikers</h3>
+			<h3>Wachtrij</h3>
 			<b></b>
+		</div>
+		
+		
+		<h2>Bezoekers</h2>
+		<div>
+			hier de google analytics shit
+		</div>
+		
+		<h2>Welkomsboodschap voor alle gebruikers</h2>
+		<div>
+			"plaats hier een nieuwe welkomsboodschap voor alle gebruikers!"
 		</div>
 	</div>
 </div>

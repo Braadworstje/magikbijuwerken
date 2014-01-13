@@ -17,7 +17,7 @@
 		
 		<p><%= @vacancy.description %></p><br><br>
 		
-		<%= link_to 'Reageren op deze vacature', :controller => "vacancies", :action => "apply_to_vacancy" %>
+		<%= link_to 'Reageren op deze vacature', :confirm => ("Weet u zeker dat u wilt reageren op: " + @vacancy.title.to_s + "?"), :controller => "vacancies", :action => "apply_to_vacancy" %>
 	</div>
 </div>
 

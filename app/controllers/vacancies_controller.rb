@@ -52,7 +52,7 @@ class VacanciesController < ApplicationController
     @vacancies = Vacancy.all
     if @vacancy.update_attributes(vacancy_params)
       flash[:success] = "Vacature geupdated"
-      redirect_to @vacancy
+      redirect_to admin_vacancies_path, notice: 'Vacature aangepast!'
     else
       render 'edit'
     end
