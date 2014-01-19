@@ -1,0 +1,22 @@
+<div class="row clearfix">
+	<%= render partial: "admin/profile" %>
+	<div class="col-md-9 column">
+		<%= render partial: "admin/nav" %>
+			<div>
+			        Paginas wijzigen
+
+			        <%= form_for(@page)  do |p| %>
+
+			               <%= p.text_area :faq, :placeholder => "Veelgestelde vragen" %>
+						   <%= p.text_area :terms, :placeholder => "Algemene voorwaarden" %>
+						   <%= p.text_area :company, :placeholder => "Informatie over het bedrijf" %>
+						   <%= p.text_area :contact, :placeholder => "Contactgegevens" %>
+				   
+				
+			               <%= p.submit %>
+			        <% end %>
+			</div>
+		</div>
+	</div>
+	
+	

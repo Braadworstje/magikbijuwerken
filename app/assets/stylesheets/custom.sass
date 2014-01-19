@@ -1,3 +1,4 @@
+
 $content_left: 240px
 $content_right: 710px
 $menu_hover: #f8f4f1
@@ -28,7 +29,14 @@ $grey: #95a5a6
 $grey_dark: #7f8c8d
 
 $label: #222222
-$background-color: #ecf0f1
+$background-color: #000000
+
+$button-font-color: #FFF
+$button-color: #3498db
+$button-color-hover: #2980b9
+
+$even-items: #fff
+$uneven-items: #f8f4f1
 
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -48,6 +56,7 @@ nav, output, ruby, section, time, mark, audio, video
   :font-size 100%
   :font inherit
   :vertical-align baseline
+  :font-family Lato
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -55,10 +64,13 @@ footer, header, hgroup, nav, section
   :display block
 
 a, p
-  :font-size 12px
-  :font-family lato
+  :font-size 0.875em
+a:hover 
+  :text-decoration none
 p
   :padding 10px
+a.name
+  :color $blue
 body 
   :line-height 1
 
@@ -67,6 +79,7 @@ ol, ul
 
 blockquote, q 
   :quotes none
+
 
 blockquote:before, blockquote:after,
 q:before, q:after 
@@ -79,275 +92,179 @@ table
 
 
 body
-  :width 960px
   :height auto
   :margin 0px auto
   :padding 0px auto
   :background-color $background-color
-
-
-#content_left
-  :width $content_left
-  :float left
-  :margin-right 10px
-
-#content_right
-  :width $content_right
-  :float left
-#header
-  :float left
-  :width 960px
-  :height 200px
-  #menu
-    :float right
-    :width 700px
-    :height 100px
-    li
-      :width 80px
-      :height 70px
-      :float left
-      :position relative
-      a
-        :width 80px
-        :text-align center
-        :float left
-        :font-size 14px
-        :height 70px
-        :padding-top 50px
-        :border-top 5px solid $background-color
-      .icon
-        :width 48px
-        :height 48px
-        :position absolute
-        :top 5px
-        :left 17px
-    .home
-      .icon
-        :background-image url("icons/News-48.png")
-      &:hover, a.active
-        :border-top 5px solid $blue_dark
-    .news
-      .icon
-        :background-image url("icons/news-48.png")
-      &:hover, a.active
-        :border-top 5px solid $blue_dark
-    .vacancies
-      .icon
-        :background-image url("icons/vacancies-48.png")
-      &:hover, a.active
-        :border-top 5px solid $blue_dark
-
-    .reviews
-      .icon
-        :background-image url("icons/reviews-48.png")
-      &:hover, a.active
-        :border-top 5px solid $blue_dark
-    .contact
-      .icon
-        :background-image url("icons/contact-48.png")
-      &:hover, a.active
-        :border-top 5px solid $blue_dark
-    .profile
-      .icon
-        :background-image url("icons/profile-48.png")
-      &:hover, a.active
-        :border-top 5px solid $blue_dark
-
-.box_240px, .box_710px
-  :float left
-  :background-color #fff
-  :height auto
-  :position relative
+  .box
+    :padding -15px
+.box
+  :background-color white
   :margin-bottom 10px
+  :height auto
+  :width 100%
   :position relative
-
-  a.title
-    :background-color $blue_dark
-    :color $white
-    :font-size 14px
-    :padding 5px
+  :float left
+  h1, p
     :float left
     :width 100%
-  
-  a.right_top
-    :position absolute
-    :color $white
-    :top 4px
-    :right 5px
-
-
-.box_240px
-  :width 240px
-
-  /*USER MENU*/
-  ul
-    :width $content_left
-    :height auto
+    :margin 5px 0px
+  a
     :float left
-
-    li
-      :float left
-      :height 40px
-      :width $content_left
-      :position relative
-      :border-left 5px solid #fff
-      a
-        :color #8d8070
-        :font-size 12px
-        :padding 15px 10px
-        :float left
-        :height 40px
-        :width $content_left 
-        :display block
-
-      &:hover, .active
-        :background-color #f8f4f1
-        :cursor pointer
-      
-      .active
-        :margin-left -5px
-    .profile
-      .menu_icon
-        :background-image url("icons/profile-16.png")
-      &:hover, a.active
-        :border-left 5px solid $blue_dark
-    
-    .media
-      .menu_icon
-        :background-image url("icons/images-16.png")
-      &:hover, a.active
-        :border-left 5px solid $red_dark
-    
-    .qualities
-      .menu_icon
-        :background-image url("icons/qualities-16.png")
-      &:hover, a.active
-        :border-left 5px solid $green_dark
-    
-    .vacancies
-      .menu_icon
-        :background-image url("icons/vacancies-16.png")
-      &:hover, a.active
-        :border-left 5px solid $midnight_blue_dark
-    
-    .courses
-      .menu_icon
-        :background-image url("icons/courses-16.png")
-      &:hover, a.active
-        :border-left 5px solid $yellow_dark
-    
-    .menu_icon
-      :width 16px
-      :height 16px
-      :position absolute
-      :top 12px
-      :right 10px
-.progress
-  :width 100%
-  :height 20px
-  :margin 5px
-  :background-color #c8c8c8
-  :position relative
-  label
-    :background-color $label
+  p
+    :padding 0px
+  img
+    :width 100px
+    :height 100px
     :float left
-    :height 20px
-    :width 70px
-    :padding 5px 5px
-    :font-size 11px
-    :color #fff
-    :position relative
-  
-  .progress-bar
-    :background-image url("matchbar-710.png")
-    :width 630px
-    :height 20px
-    :float left
-    :position absolute
-    :left 70px
-
-  .match
-    :width 50%
-    :height 100%
-    :background-color blue
-    :float left
-    :position absolute
-    :left 42px
-  
+    :background-color red
+    :margin 10px 0px
 #profile
-  :width $content_left
+  :width 100%
   :height auto
-  :background-color $white
+  :background-color #fff
   :float left
   :position relative
   :margin-bottom 10px
 
-  .background
-    :height 120px
-    :width 240px
+  #profile_background
+    :height 90px
+    :background-image url("profile-background.jpg")
+    :width 100%
     :float left
     :margin-bottom 60px
-
-  .picture
+  
+  #profile_picture
     :width 100px
     :height 100px
     :position absolute
-    :top 70px
-    :left 70px
-  a.name, a.quote
-    :width $content_left
-    :height auto
-    :float left
-    :text-align center
-    :padding 0px 10px
-  a.name
+    :top 40px
+    :left 65px
+  p
     :font-size 18px
-
-  a.quote
-    :font-size 11px
-    :color #898989
-
-  #menu
-    :width 241px
-    :height 45px
+    :text-align center
+    :width 100%
     :float left
-    :margin-top 10px
+    :padding 0px
+    :margin 5px
+  a
+    :font-size 12px
+    :text-align center
+    :width 100%
+    :margin 5px
+    :float left
+ul.user_menu
+  :margin -20px -10px 0px 0px
+  :float right
+  :width 100%
+  :height 100px
+  li
+    :width 90px
+    :height 95px
+    :float right
+    :position relative
+    :border-top 5px solid #FFF
+    :z-index 1
+    :background-color #FFF
+    a
+      :width 100%
+      :text-align center
+      :float left
+      :font-size 12px
+      :height 100%
+      :padding-top 60px
+      :z-index 100
+      :position absolute
+    .icon
+      :width 48px
+      :height 48px
+      :position absolute
+      :top 5px
+      :left 20px
+      :z-index 1
+
+  .home
+    .icon
+      :background-image url("icons/home-48.png")
+    &:hover, a.active
+      :border-top 5px solid $blue_dark
+  .news
+    .icon
+      :background-image url("icons/news-48.png")
+    &:hover, a.active
+      :border-top 5px solid $blue_dark
+  .vacancies
+    .icon
+      :background-image url("icons/vacancies-48.png")
+    &:hover, a.active
+      :border-top 5px solid $blue_dark
+
+  .reviews
+    .icon
+      :background-image url("icons/reviews-48.png")
+    &:hover, a.active
+      :border-top 5px solid $blue_dark
+  .help
+    .icon
+      :background-image url("icons/help-48.png")
+    &:hover, a.active
+      :border-top 5px solid $blue_dark
+  .profile
+    .icon
+      :background-image url("icons/profile-48.png")
+    &:hover, a.active
+      :border-top 5px solid $blue_dark
+a.title
+  :background-color $blue_dark
+  :color $white
+  :font-size 14px
+  :padding 5px
+  :float left
+  :width 100%
+
+a.button-full, a.button-medium, a.button-small
+  :padding 10px
+  :margin-bottom 10px
+  :float left
+  :background-color $button-color
+  :color $button-font-color
+  :text-align center
+  &:hover
+    :background-color $button-color-hover
+    :cursor pointer
+a.button-full
+  :width 100%
+a.button-medium
+  :width auto
+  :float right
+  :padding 5px 10px
+a.button-small
+  :padding 0px 5px
+  :font-size 0.750em
+td
+  img
+    :width 100px
+    :height 100px
+    :float left
+    :background-color red
+    :margin 10px 0px
+  h1
+    :margin 10px 0px
+  p
+    :float left
+    :width 100%
+
+
+#footer
+  :width 100%
+  :max-height 20px
+  :text-align center
+/*
+.progress-bar-success
+  :width 240px
+  :height 100%
+  :background-color blue
+  :float left
+  :position absolute
 
   
-    .box1, .box2, .box3
-      :width 80px
-      :height 100%
-      :float left
-      :background-color #1d2124
-      :border-right 1px solid #000
-    
-    a
-      :font-size 14px
-      :color #fff
-      :padding-top 15px
-      :float left
-      :margin-left 5px
-    
-    .box1:hover, .box2:hover, .box3:hover
-      :background-color #000
-      :cursor pointer
-    
-    .box1
-      :border-top 5px solid #ea6254
-      .image
-        :background-image url("icons/images.png")
-    .box2
-      :border-top 5px solid #41b873
-      .image
-        :background-image url("icons/qualities.png")
-    
-    .box3
-      :border-top 5px solid #f3cb2c
-      .image
-        :background-image url("icons/appointments.png")
-    
-      .image
-        :float left
-        :height 24px
-        :width 24px
-        :margin 10px

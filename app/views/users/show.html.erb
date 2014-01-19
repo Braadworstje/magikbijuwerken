@@ -1,68 +1,77 @@
 <div class="row clearfix">
     <%= render partial: "profile" %>
-    <div class="col-md-10 column">
+    <div class="col-md-9 column">
         <%= render partial: "nav" %>
 		<% if ((current_user.admin != true) && (@user.id != current_user.id))%>
 			<h1> ACCESS DENIED LOSER </h1>
 		<% else %>
         <div class="row clearfix">
-            <div class="col-md-12 column">
-                Welkom <%= current_user.first_name %> <%= current_user.last_name %>
-                <br/><br/>
-                maakerwerkvan.nl heeft deze week maar liefst -2 deelnemers voorzien van een nieuwe baan
-            </div>
+                <div class="box">
+                    <a class="title"> Mededelingen</a>
+                    Welkom <%= current_user.first_name %> <%= current_user.last_name %>
+                    <br/><br/>
+                    Mag ik bij u werken heeft deze week maar liefst 15 deelnemers voorzien van een nieuwe baan!!
+                </div>
         </div>
 		
         <div class="row">
-            <h4>Nieuwste aanbevolen vacatures</h4>
-            <% @vacancies.recent_vacancies.limit(3).each do |va| %>
-                <div class="col-md-4">
-                    <h4 class="media-heading">
-                        <%= va.title %> | <%= va.address %>
-                    </h4>
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"><%= @matchscore[va] %>
+                <div class="box">
+                    <a class="title">Nieuwste aanbevolen vacatures</a>
+                    <% @vacancies.recent_vacancies.limit(3).each do |va| %>
+                        <div class="col-md-4">
+                            
+							<%= link_to va do %>
+								<h1><%= va.title %> | <%= va.address %></h1>
+							<% end %>
+							
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
 
-                        <span class="sr-only"></span>
+                                <span class="sr-only"></span>
 
-                        </div>
-                        <%= @matchscore[va] %>%
-                    </div>
-                    <%= va.created_at.to_formatted_s(:day_month_year) %> <br>
+                                </div>
+                                <div class="background">
+                                </div>
+                                <label> <%= @matchscore[va] %>%</label>
+                            </div>
+                            
+                   			<p><%= va.description %></p>					 							
+							<p><%=va.created_at.to_formatted_s(:day_month_year) %> <br>
 					
 					<% if @user.latitude != nil %>
                   	  <b><%= va.distance_from([@user.latitude, @user.longitude]).to_f.round %> km</b><br>
 					<% else %>
 						<b>Gebruiker heeft geen plaats opgegeven</b><br>
 					<% end %>
-    
-                        <b>Bijpassende kwaliteiten: </b><br>
-                        <%= @matchingqualities[va].map(&:inspect).join(', ').gsub('"', '') %><br><br>
-						
-					<b> omschrijving </b>
-                    <%= va.description %>
+				</p>
+                                 
                 </div>
             <% end %>
         </div>
         <div class="row clearfix">
-            <div class="col-md-12 column">
-                <h4>Laatste nieuws</h4>
-                <% @news.limit(3).each do |n| %>
-					<%= n.created_at.to_formatted_s(:day_month_year) %><br>
-					<%= n.title %><br>
-					<%= n.content%><br><br>
-				<% end %>
+            <div class="box news">
+                <a class="title">Laatste nieuws</a>
+                
+                <table class="table table-striped">
+					<% @news.each do |n| %>
+                    <tr>
+                        <td class="col-md-2">
+                            <img> </img>
+                        </td>  
+                        <td class="col-md-10">
+                            <h1><%= n.title %></h1>
+                            <p><%= n.content %>
+                            </p>
+                            <a class="button-medium">
+                                <%= link_to "Meer lezen", n %>
+                            </a>
+                        </td>
+                    </tr>
+					<% end %>
+                </table>
+
             </div>
         </div>
 		<% end %>
-    </div>
-</div>
-
-<div class="row clearfix">
-    <div class="col-md-12 column">
-        <h4><%= link_to "Over magikbijuwerken.nl"%> | 
-            <%= link_to "Veel gestelde vragen" %> | 
-            <%= link_to "Algemene voorwaarden" %> | 
-            <%= link_to "Contact" %></h4>
     </div>
 </div>

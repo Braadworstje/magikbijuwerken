@@ -123,29 +123,31 @@ a:active {
  * Addresses font sizes and margins set differently in IE6/7
  * Addresses font sizes within 'section' and 'article' in FF4+, Chrome, S5
  */
-
+h1,h2,h3,h4,h5,h6{
+    color: #3498db;
+}
 h1 {
-    font-size: 2em;
+    font-size: 1.125em;
     margin: 0.67em 0;
 }
 
 h2 {
-    font-size: 1.5em;
+    font-size: 1.000em;
     margin: 0.83em 0;
 }
 
 h3 {
-    font-size: 1.17em;
+    font-size: 0.875em;
     margin: 1em 0;
 }
 
 h4 {
-    font-size: 1em;
+    font-size: 0.813em;
     margin: 1.33em 0;
 }
 
 h5 {
-    font-size: 0.83em;
+    font-size: 0.750em;
     margin: 1.67em 0;
 }
 

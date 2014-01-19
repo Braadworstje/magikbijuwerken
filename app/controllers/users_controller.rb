@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authorize, :except => [:index, :new, :create]
+  helper_method :sort_column, :sort_direction
   
   def index
     @users = User.all
@@ -91,7 +92,12 @@ class UsersController < ApplicationController
 end
    
   private
-
+  
+  def user_params 
+    params.require(:user).permit(
+       :email, :password, :password_confirmation, :admin, :address, :accepted, :gender, :first_name, :last_name, :quality_id, :vacancy_id, :quality_ids, :vacancy_ids, 
+       :image, :remove_image, :municipal, :cv, :remove_cv, :sort_column, :sort_direction, {:qualities_attributes => [:quality]}, {:vacancies_attributes => [:description]})
+  end
 #def person_params
  #    params.require(:person).permit(:name, :age)
  #  end

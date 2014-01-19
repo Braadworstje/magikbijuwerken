@@ -2,20 +2,21 @@
 	<%= render partial: "admin/profile" %>
 	<div class="col-md-10 column">
 		<%= render partial: "admin/nav" %>
+
+
+		<div class="panel panel-primary">
+		        <div class="panel-heading">
+		        Kwaliteit aanmaken
+		        </div>
+		        <div class="panel-body">
+		                <%= form_for(@quality)  do |q| %>
+
+		                <%= q.text_field :quality, :placeholder => "Kwaliteit" %>
+
+		               <button class="btn btn-large btn-warning" q.submit>Maak kwaliteit</button>
+		        <% end %> 
+		        </div>
+		</div>
+
 	</div>
-</div>
-
-
-<div class="panel panel-primary">
-        <div class="panel-heading">
-        Kwaliteit aanmaken
-        </div>
-        <div class="panel-body">
-                <%= form_for(@quality)  do |q| %>
-
-                <%= q.text_field :quality, :placeholder => "Kwaliteit" %>
-
-               <button class="btn btn-large btn-warning" q.submit>Maak kwaliteit</button>
-        <% end %> 
-        </div>
 </div>

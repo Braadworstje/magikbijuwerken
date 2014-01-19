@@ -9,14 +9,15 @@ Project::Application.routes.draw do
   end
   resources :qualities
   resources :news
+  
+  get "pages/index"
+  
+  resources :pages
 
-  root 'static_pages#_home'
+  root 'pages#home'
 
   match '/signup',  to: 'users#new',            via: 'get'
   match '/edit',    to: 'users#edit',           via: 'get'
-  match '/help',    to: 'static_pages#help',    via: 'get'
-  match '/about',   to: 'static_pages#about',   via: 'get'
-  match '/contact', to: 'static_pages#contact', via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/vacancies', to: 'vacancies#index',    via: 'get'
@@ -31,13 +32,14 @@ Project::Application.routes.draw do
   match '/admin/vacancies', to: 'admin#vacancies', via: 'get'
   match '/admin/users', to: 'admin#users', via: 'get'
   match '/admin/qualities', to: 'admin#qualities', via: 'get'
+  match '/faq', to: 'pages#faq', via: 'get'
+  match '/terms', to: 'pages#terms', via: 'get'
+  match '/company', to: 'pages#company', via: 'get'
+  match '/contact', to: 'pages#contact', via: 'get'
 
   get "users/new"
   get "users/index"
-  get "static_pages/_home"
-  get "static_pages/help"
-  get "static_pages/about"
-  get "static_pages/Contact"
+  get "pages/home"
   get "users/edit"
   get "vacancies/index"
   get "vacancies/edit"

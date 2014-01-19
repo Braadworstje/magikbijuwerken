@@ -15,9 +15,14 @@ class VacanciesController < ApplicationController
   def apply_to_vacancy
     @user = User.find_by_id(current_user)
     
-    @user.vacancies << Vacancy.find(params[:id])
+    insert_vacancy = Vacancy.find(params[:id])
     
-    redirect_to vacancies_path, notice: 'Reactie geplaatst!'
+    if @user.vacancies.include?(insert_vacancy)
+      redirect_to vacancies_path, notice: 'U heeft al op deze vacature gereageerd'
+    else
+      @user.vacancies << insert_vacancy
+      redirect_to vacancies_path, notice: 'Reactie geplaatst!'
+    end  
   end
 
   def new

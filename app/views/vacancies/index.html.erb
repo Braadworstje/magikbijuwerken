@@ -1,37 +1,49 @@
 <div class="row clearfix">
     <%= render partial: "users/profile" %>
-    <div class="col-md-10 column">
+    <div class="col-md-9 column">
         <%= render partial: "users/nav" %>
-		<div class="matchbar_710">
-			<div class="match">
-			</div>
-			<div class="matchbar_710BG">
-			</div>
-		</div>
-		<table class="vacancies">
-			<div class = "sort">
-				<b><%= sortable("title", "naam") %></b>
-				<b><%= sortable("created_at", "datum") %></b>
-				<b><%= sortable("description", "aanbevolen") if !current_user.admin? %></b>
-			</div>
-			<% for v in @vacancies %>
+		<div class="box">
+			<a class="title">Alle vacatures</a>
+			<table class="table">
+					<th><%= sortable("title", "naam") %> & <%= sortable("address", "plaats") %></th>
+					<th>afstand</th>
+					<th><%= sortable("created_at", "datum")%></th>
+					<th><%= sortable("description", "aanbevolen") %></th>
+					<th></th>
+				<% for v in @vacancies %>
 				<div>
-					<h3><%= link_to v.title, v %> | <%= v.address %> </h3>
-					
-					<% if current_user.latitude != nil %>
-						<b><%= v.distance_from([current_user.latitude, current_user.longitude]).to_f.round %> km</b><br>
-					<% else %>
-						<b>U heeft nog geen plaats ingevuld</b><br>
-					<% end %>
-					<%= v.created_at.to_formatted_s(:day_month_year) %><br>
-					Matchscore: <%= @matchscore[v] if !current_user.admin? %>%<br>
-			
-    
-					<b>Bijpassende kwaliteiten: </b><% if @matchingqualities[v].count == 0 %>GEEN<% end %>
-		    		<%= @matchingqualities[v].map(&:inspect).join(', ').gsub('"', '') %></p>
-			
+					<tbody>
+						<tr>
+							<td><%= link_to v.title, v %> | <%= v.address %></td>
+							<td><% if current_user.latitude != nil %>
+								<b><%= v.distance_from([current_user.latitude, current_user.longitude]).to_f.round %> km</b>
+							<% else %>
+								<b>U heeft nog geen plaats ingevuld</b><br>
+							<% end %></td>
+							<td><%= v.created_at.to_formatted_s(:day_month_year) %></td>
+							<td>
+								<div class="progress">
+			                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+
+			                        <span class="sr-only"></span>
+
+			                        </div>
+			                        <div class="background">
+			                        </div>
+			                        <label> <%= @matchscore[v] %>% </label>
+			                    </div>
+
+							</td>
+						</tr>	
+						<tr>
+							<td colspan="3"><%= v.description %></td>
+							<td><a class="button-small"<%= link_to 'Bekijk', vacancy_path(v) %></td>
+						</tr>
+					</tbody>
 				</div>
 			<% end %>
-		</table>
+			</table>
+		</div>
 	</div>
 </div>
+

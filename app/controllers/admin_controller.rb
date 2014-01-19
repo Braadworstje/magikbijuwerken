@@ -24,7 +24,7 @@ class AdminController < ApplicationController
   end
   
   def pages
-    
+    @pages = Page.all
   end
   
   def qualities

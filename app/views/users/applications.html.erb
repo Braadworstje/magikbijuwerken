@@ -1,6 +1,6 @@
 <div class="row clearfix">
 	<%= render partial: "profile" %>
-	<div class="col-md-10 column">
+	<div class="col-md-9 column">
 		<%= render partial: "nav" %>
 
 		<div class="row clearfix">
@@ -9,20 +9,26 @@
 			</div>
 		</div>
 		<div class="row">
-			<h4>Uw reacties</h4>
-			<% @user.vacancies.each do |v| %>
-			<%= link_to v.title, v %><br>
-			<%= v.description %><br><br>
-			<% end %>
+			<a class="title">Uw reacties</a>
+			
+			<table class="table table-striped">
+				<thead>
+					<th><%= sortable("title", "naam") %></th>
+					<th><%= sortable("description", "omschrijving")%></th>
+				</thead>
+				<tbody>
+					<% @user.vacancies.each do |v| %>
+						<tr>
+							<td><%= link_to v.title, v %></td>
+							<td><%= v.description %></td>
+							<td><% @user.user_vacancies.where(user_id: @user.id, vacancy_id: v.id).each do |uv| %>
+									<%= uv.created_at.to_formatted_s(:day_month_year) %>
+								<% end %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>
-
-<div class="row clearfix">
-	<div class="col-md-12 column">
-		<h4><%= link_to "Over magikbijuwerken.nl" %> | 
-			<%= link_to "Veel gestelde vragen" %> | 
-			<%= link_to "Algemene voorwaarden" %> | 
-			<%= link_to "Contact" %></h4>
-		</div>
-	</div>

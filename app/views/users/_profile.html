@@ -1,17 +1,24 @@
 <% if current_user.admin? %>
 	<div class="col-md-2 column">
-   		<div id="profile_background"></div>
-		<%= link_to "Ga naar admin-pagina", admin_stats_path %>
+		<div class="profile">
+   			<div id="profile_background"></div>
+				<p><%= link_to "Ga naar admin-pagina", admin_stats_path %></p>
+		</div>
 	</div>
 <% else %>
-    <div class="col-md-2 column">
-        <div id="profile_background"></div>
-        <div><%= image_tag(image_user_path(current_user), :alt => "Profielfoto", :style => "width: 150px; height: 150px;") if current_user.image? %></div>
-        <p><%= current_user.first_name %> <%= current_user.last_name %></p>
-        <% if (current_user.qualities.count > 3) %>
-            80%
-        <% else %>
-            Uw profiel is nog niet compleet
-        <% end %>
-    </div>
+
+	<%= link_to edit_user_path(current_user) do %>
+	    <div class="col-md-3 column">
+			<div id="profile">
+	        	<div id="profile_background"></div>
+	        	<div id="profile_picture"><%= image_tag(image_user_path(current_user), :alt => "Profielfoto", :style => "width: 100px; height: 100px;") if current_user.image? %></div>
+	        <p><%= current_user.first_name %> <%= current_user.last_name %></p>
+	        <% if (current_user.qualities.count > 3) %>
+	            80%
+	        <% else %>
+	            Uw profiel is nog niet compleet
+	        <% end %>
+	    </div>
+		</div>
+	<% end %>
 <% end %>

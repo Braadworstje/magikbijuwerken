@@ -1,20 +1,36 @@
 <div class="row clearfix">
     <%= render partial: "users/profile" %>
-    <div class="col-md-10 column">
-        <%= render partial: "users/nav" %>
+    <div class="col-md-9 column">
 
-<% for n in @news %>
-	<h3><%= n.title %></h3>
-	<b><%= n.created_at.to_formatted_s(:day_month_year) %></b>
-	<%
-		str = n.content
-		first_100_words = str.split(" ").first(100).join(" ")
-	%>
 
-	<p><%= first_100_words %>...</p>
-	
-	<%= link_to 'Lees meer', news_path(n) %> | <%= link_to 'Bericht verwijderen', n, :confirm => 'Weet u het zeker?', :method => :delete %>
-<% end %>
+	        <%= render partial: "users/nav" %>
+    	<div class="box">
+    		<a class="title">Nieuws</a>
+	    	<table class="table table-striped">
+				<% for n in @news %>
+					<tr>
+						<td class="col-md-2">
+			            	<img> </img>
+			        	</td> 
 
+			        	<td class="col-md-10">
+							<h1><%= n.title %></h1>
+							<b><%= n.created_at.to_formatted_s(:day_month_year) %></b>
+							<%
+								str = n.content
+								first_100_words = str.split(" ").first(100).join(" ")
+							%>
+
+							<p><%= first_100_words %>...</p>
+							
+							<%= link_to 'Lees meer', n, :class => "button-medium" %>
+                     		   	
+                            </a>
+						</td>
+
+			    	</tr>
+				<% end %>
+			</table>
+		</div>
 	</div>
 </div>

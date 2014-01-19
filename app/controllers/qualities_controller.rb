@@ -15,11 +15,11 @@ class QualitiesController < ApplicationController
     def create 
     	@quality = Quality.create(quality_params)
 
-  	if @quality.save
-  		redirect_to admin_qualities_path
-  	else
-  		render action: "new"
-  	end
+  	  if @quality.save
+  		  redirect_to admin_qualities_path
+  	  else
+  		  render action: "new"
+  	  end
     end
 
     def update
