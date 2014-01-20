@@ -10,6 +10,11 @@
                     <a class="title"> Mededelingen</a>
                     Welkom <%= current_user.first_name %> <%= current_user.last_name %>
                     <br/><br/>
+					
+					<% @user.qualities.each do |q| %>
+						<%= q.quality %>
+					<% end %>
+					
                     Mag ik bij u werken heeft deze week maar liefst 15 deelnemers voorzien van een nieuwe baan!!
                 </div>
         </div>

@@ -1,89 +1,94 @@
 
 <div class="row clearfix">
-    <%= render partial: "profile" %>
-    <div class="col-md-9 column">
-        <%= render partial: "nav" %>
-        <h1>Wijzig gegevens</h1>
+	<%= render partial: "profile" %>
+	<div class="col-md-9 column">
+		<%= render partial: "nav" %>
+		<h1>Wijzig gegevens</h1>
 
 
-            <%= form_for @user do |f| %>
+		<%= form_for @user do |f| %>
               
-              <h3>Mijn profielfoto</h3>
-              <div class = "field">
-                <%= f.label "Huidige profielfoto aanpassen" %><br>
-				<%= image_tag(image_user_path(@user), :alt => "Profielfoto", :style => "width: 300px; height: 300px;") if @user.image? %>
-                <%= f.file_field :image %>
-              </div>
+		<h3>Mijn profielfoto</h3>
+		<div class = "field">
+			<%= f.label "Huidige profielfoto aanpassen" %><br>
+			<%= image_tag(image_user_path(@user), :alt => "Profielfoto", :style => "width: 300px; height: 300px;") if @user.image? %>
+			<%= f.file_field :image %>
+		</div>
 
-              <!-- Checkbox moet een button worden OMGOMGOMGMOGG -->
-              <div class = "field">
-                <%= f.label "Huidige profielfoto verwijderen" %><br>
-                <%= image_tag(image_user_path(@user), :alt => "Profielfoto", :style => "width: 150px; height: 150px;") if @user.image? %>
-                <%= f.check_box :remove_image %>
-              </div>
+		<!-- Checkbox moet een button worden OMGOMGOMGMOGG -->
+		<div class = "field">
+			<%= f.label "Huidige profielfoto verwijderen" %><br>
+			<%= image_tag(image_user_path(@user), :alt => "Profielfoto", :style => "width: 150px; height: 150px;") if @user.image? %>
+			<%= f.check_box :remove_image %>
+		</div>
 
-              <h3>Mijn persoonsgegevens</h3>
-              <div class = "field">
-                <%= f.label "Voornaam" %><br>
-                <%= f.text_field :first_name %>
-              </div>
+		<h3>Mijn persoonsgegevens</h3>
+		<div class = "field">
+			<%= f.label "Voornaam" %><br>
+			<%= f.text_field :first_name %>
+		</div>
 
-              <div class = "field">
-                <%= f.label "Achternaam" %><br>
-                <%= f.text_field :last_name %>
-              </div>
+		<div class = "field">
+			<%= f.label "Achternaam" %><br>
+			<%= f.text_field :last_name %>
+		</div>
 
-              <div class = "field">
-                <%= f.label "Geslacht" %><br>
-                <%= f.text_field :gender %>
-              </div>
+		<div class = "field">
+			<%= f.label "Geslacht" %><br>
+			<%= f.text_field :gender %>
+		</div>
 
-              <div class = "field">
-                <%= f.label "Email adres" %><br>
-                <%= f.text_field :email %>
-              </div>
+		<div class = "field">
+			<%= f.label "Email adres" %><br>
+			<%= f.text_field :email %>
+		</div>
 
-              <div class = "field">
-                <%= f.label "Postcode" %><br>
-                <%= f.text_field :address %>
-              </div>
+		<div class = "field">
+			<%= f.label "Postcode" %><br>
+			<%= f.text_field :address %>
+		</div>
 
-              <div class = "field">
-                <%= f.label "Gemeente" %><br>
-                <%= f.text_field :municipal %>
-              </div>
-
-              <h3>Mijn cv</h3>
-              <div class = "field">
-                <%= f.label "Cv plaatsen" %><br>
-                <%= f.file_field :cv %>
-              </div>
-
-              <!-- Checkbox moet een button worden OMGOMGOMGMOGG -->
-              <div class = "field">
-                <%= f.check_box :remove_cv %>
-                <%= f.label "Cv verwijderen" %><br><br>
-              </div>
-
-              <div class = "field">
-              Download CV<br>
-              <%= link_to 'Download CV', download_cv_user_path(current_user) %><br><br>
-
-              <div class = "field">
-                <%= f.label :password %><br>
-                <%= f.password_field :password %>
-              </div>
-
-              <div class = "field">
-                <%= f.label :password_confirmation %><br>
-                <%= f.password_field :password_confirmation %>
-              </div>
+		<div class = "field">
+			<%= f.label "Gemeente" %><br>
+			<%= f.text_field :municipal %>
+		</div>
 			  
-			  <div class = "field">
-				  <%= f.label :accepted %><br>
-				  <%= f.check_box :accepted %>
-			  </div>
-            <%= f.submit "Registreren", class: "btn btn-large btn-warning" %>
-          <% end %>
-    </div>
-</div>
+		<h3>Mijn kwaliteiten <% @defaultqualities.each do |q| %><%= q %><% end %></h3>
+		<div class = "field">
+			<%= f.label "Selecteer kwaliteiten" %>
+			<%= select_tag(:quality_id, options_for_select(@qualities.collect{ |q| [q.quality, q.id] }, @defaultqualities.map{ |dq| dq.id }) ,{:multiple => true,  class: 'chosen-quality-select'}) %>
+		</div>
+		<h3>Mijn cv</h3>
+		<div class = "field">
+			<%= f.label "Cv plaatsen" %><br>
+			<%= f.file_field :cv %>
+		</div>
+			  
+		<!-- Checkbox moet een button worden OMGOMGOMGMOGG -->
+		<div class = "field">
+			<%= f.check_box :remove_cv %>
+			<%= f.label "Cv verwijderen" %><br><br>
+		</div>
+
+		<div class = "field">
+			Download CV<br>
+			<%= link_to 'Download CV', download_cv_user_path(current_user) %><br><br>
+
+			<div class = "field">
+				<%= f.label :password %><br>
+				<%= f.password_field :password %>
+			</div>
+
+			<div class = "field">
+				<%= f.label :password_confirmation %><br>
+				<%= f.password_field :password_confirmation %>
+			</div>
+			  
+			<div class = "field">
+				<%= f.label :accepted %><br>
+				<%= f.check_box :accepted %>
+			</div>
+			<%= f.submit "Registreren", class: "btn btn-large btn-warning" %>
+			<% end %>
+		</div>
+	</div>

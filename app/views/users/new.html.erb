@@ -1,28 +1,65 @@
 <div class="box_710px">
-  <h1>Registreer</h1>
+	<h1>Registreer</h1>
 
-    <%= form_for @user, :html => {:multipart => true}  do |f| %>
+	<%= form_for @user, :html => {:multipart => true}  do |f| %>
+	  
+	<h3>Mijn persoonsgegevens</h3>
+	<div class = "field">
+		<%= f.label "Voornaam" %><br>
+		<%= f.text_field :first_name %>
+	</div>
 
-      <%= f.label "Naam" %>
-      <%= f.text_field :first_name %>
+	<div class = "field">
+		<%= f.label "Achternaam" %><br>
+		<%= f.text_field :last_name %>
+	</div>
 
-      <%= f.label "Achternaam" %>
-      <%= f.text_field :last_name %>
+	<div class = "field">
+		<%= f.label "Geslacht" %><br>
+		<%= f.text_field :gender %>
+	</div>
 
-      <%= f.label "Email" %>
-      <%= f.text_field :email %>
+	<div class = "field">
+		<%= f.label "Email adres" %><br>
+		<%= f.text_field :email %>
+	</div>
+	  
+	<div class = "field">
+		<%= f.label "Wachtwoord" %>
+		<%= f.password_field :password %>
+	</div>
 
-      <%= f.label "Wachtwoord" %>
-      <%= f.password_field :password %>
+	<div class = "field">
+		<%= f.label "Bevestig wachtwoord" %>
+		<%= f.password_field :password_confirmation %>
+	</div>
+      
+	<div class = "field">
+		<%= f.label "Adres" %><br>
+		<%= f.text_field :address %>
+	</div>
 
-      <%= f.label "Bevestig wachtwoord" %>
-      <%= f.password_field :password_confirmation %>
+	<div class = "field">
+		<%= f.label "Gemeente" %><br>
+		<%= f.text_field :municipal %>
+	</div>
 
-      <%= f.label "Selecteer kwaliteiten" %>
-      <%= select_tag(:quality_id, options_for_select(@qualities.collect{ |q| [q.quality, q.id] }), {:multiple => true,  class: 'chosen-quality-select'}) %><br>
+	<h3>Mijn cv</h3>
+	<div class = "field">
+		<%= f.label "Cv plaatsen" %><br>
+		<%= f.file_field :cv %>
+	</div>
 
-      <%= f.label "Profielfoto uploaden" %>
-      <%= f.file_field :image %><br>
+	<h3>Mijn kwaliteiten</h3>
+	<div class = "field">
+		<%= f.label "Selecteer kwaliteiten" %>
+		<%= select_tag(:quality_id, options_for_select(@qualities.collect{ |q| [q.quality, q.id] }), {:multiple => true,  class: 'chosen-quality-select'}) %>
+	</div>
 
-      <%= f.submit "Registreren"  %>
-    <% end %>
+	<h3>Profielfoto</h3>
+	<div class = "field">
+	<%= f.label "Profielfoto uploaden" %>
+	<%= f.file_field :image %><br>
+
+	<%= f.submit "Registreren"  %>
+	<% end %>

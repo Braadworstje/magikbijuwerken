@@ -1,10 +1,12 @@
 <% if current_user.admin? %>
-	<div class="col-md-2 column">
+	<%= link_to admin_stats_path do %>
+	<div class="col-md-3 column">
 		<div class="profile">
    			<div id="profile_background"></div>
-				<p><%= link_to "Ga naar admin-pagina", admin_stats_path %></p>
+			<div id="profile_picture"><%= image_tag(image_user_path(current_user), :alt => "Profielfoto", :style => "width: 100px; height: 100px;") %></div>
 		</div>
 	</div>
+	<% end %>
 <% else %>
 
 	<%= link_to edit_user_path(current_user) do %>

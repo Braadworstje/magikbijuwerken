@@ -36,24 +36,33 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @qualities = Quality.all
+    @defaultqualities = @user.qualities.all
   end
 
   def update
-     @user = User.find(params[:id])
+    @user = User.find(params[:id])
 
-     @vacancies = Vacancy.all
-     if @user.update_attributes(user_params)
-        redirect_to current_user
-      else
-        render :action => :edit
+    @vacancies = Vacancy.all
+    if @user.update_attributes(user_params)
+      @user.users_qualities_skills.destroy_all
+      
+      params[:quality_id].split(',').each do |id|
+        @user.qualities << Quality.find(id)
       end
+      
+      redirect_to current_user
+    else
+      render :action => :edit
+    end
   end
 
   def download_cv
     @user = User.find(params[:id])
     send_file(@user.cv.path,
-          :disposition => 'attachment',
-          :url_based_filename => false)
+    :disposition => 'attachment',
+    :url_based_filename => false,
+    :x_sendfile => true)
   end
 
   def destroy
@@ -91,14 +100,14 @@ class UsersController < ApplicationController
    
 end
    
-  private
+private
   
-  def user_params 
-    params.require(:user).permit(
-       :email, :password, :password_confirmation, :admin, :address, :accepted, :gender, :first_name, :last_name, :quality_id, :vacancy_id, :quality_ids, :vacancy_ids, 
-       :image, :remove_image, :municipal, :cv, :remove_cv, :sort_column, :sort_direction, {:qualities_attributes => [:quality]}, {:vacancies_attributes => [:description]})
-  end
+def user_params 
+  params.require(:user).permit(
+  :email, :password, :password_confirmation, :admin, :address, :accepted, :gender, :first_name, :last_name, :quality_id, :vacancy_id, :quality_ids, :vacancy_ids, 
+  :image, :remove_image, :municipal, :cv, :remove_cv, :sort_column, :sort_direction, {:qualities_attributes => [:quality]}, {:vacancies_attributes => [:description]})
+end
 #def person_params
- #    params.require(:person).permit(:name, :age)
- #  end
+#    params.require(:person).permit(:name, :age)
+#  end
 #nd

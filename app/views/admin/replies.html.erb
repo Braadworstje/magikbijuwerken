@@ -13,6 +13,7 @@
 							<th><%= sortable("title", "naam") %></th>
 							<th>status</th>
 							<th>functie</th>
+							<th>reactie status</th>
 						</tr>
 					</thead>
 					<tdody>
@@ -34,6 +35,15 @@
 										Functie: <%= link_to v.title, v %><br>
 										Tel: <%= v.telephone_number %><br>
 										Email: <%= v.email %></td>
+										<td>
+											<% if u.user_vacancies.where("user_id == :user_id AND vacancy_id == :vacancy_id",
+  {user_id: u.id, vacancy_id: v.id}).first.finished %>
+												Afgerond<br>
+												<%= link_to "Verander naar open", change_finished(u, v) %>
+											<% else %>
+												Open<br>
+												<%= link_to "Verander naar afgerond", change_finished(u, v) %>
+											<% end %></td>
 									</tr>
 									<% end %>
 							<% else %>
@@ -45,6 +55,7 @@
 				
 										<td>heeft nog niet gereageerd op een vacature</td>
 										<td> -- </td>
+										<td>geen opties</td>
 								</tr>	
 							<% end %>
 						<% end %>

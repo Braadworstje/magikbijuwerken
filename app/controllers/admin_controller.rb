@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  helper_method :sort_column, :sort_direction
+  helper_method :sort_column, :sort_direction, :change_finished
   
   def stats
     @users = User.all
@@ -29,6 +29,22 @@ class AdminController < ApplicationController
   
   def qualities
     @qualities = Quality.all(:order => sort_column + " " + sort_direction)
+  end
+  
+  def change_finished(user, vacancy)
+
+    uv = user.user_vacancies.where("user_id == :user_id AND vacancy_id == :vacancy_id",
+  {user_id: user.id, vacancy_id: vacancy.id}).first
+    
+    if uv.finished
+      if uv.update_attribute(:finished, 'false')
+        admin_replies_path
+      end
+    else
+      if uv.update_attribute(:finished, 'true')
+        admin_replies_path
+      end
+    end
   end
 end
 
