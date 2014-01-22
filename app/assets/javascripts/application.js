@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require chosen-jquery
 //= require users
+//= require jquery.ui.tabs
 //= modernizr.custom.79639
 //= require_tree .
 

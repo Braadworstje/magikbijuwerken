@@ -5,39 +5,35 @@
 		<div class="box">
 			<a class="title">Alle vacatures</a>
 			<table class="table">
-					<th><%= sortable("title", "naam") %> & <%= sortable("address", "plaats") %></th>
+					<th class="sort"><%= sortable("title", "naam") %> &amp; <%= sortable("address", "plaats") %></th>
 					<th>afstand</th>
 					<th><%= sortable("created_at", "datum")%></th>
-					<th><%= sortable("description", "aanbevolen") %></th>
+					<th><%= sortable("@matchscore[@vacancy]", "aanbevolen") %></th>
 					<th></th>
 				<% for v in @vacancies %>
 				<div>
 					<tbody>
 						<tr>
-							<td><%= link_to v.title, v %> | <%= v.address %></td>
+							<td><%= v.title %> | <%= v.address %></td>
 							<td><% if current_user.latitude != nil %>
 								<b><%= v.distance_from([current_user.latitude, current_user.longitude]).to_f.round %> km</b>
 							<% else %>
 								<b>U heeft nog geen plaats ingevuld</b><br>
 							<% end %></td>
 							<td><%= v.created_at.to_formatted_s(:day_month_year) %></td>
-							<td>
-								<div class="progress">
-			                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-
-			                        <span class="sr-only"></span>
-
-			                        </div>
-			                        <div class="background">
-			                        </div>
-			                        <label> <%= @matchscore[v] %>% </label>
-			                    </div>
+							<td class="progress_bar_table">
+								<div class="progress_bar">
+									<div class="progress_bar_label">
+										<b><%= @matchscore[v].round %>%</b>
+									</div>
+									<%= progress_bar(@matchscore[v]) %>   
+								</div>
 
 							</td>
 						</tr>	
 						<tr>
 							<td colspan="3"><%= v.description %></td>
-							<td><a class="button-small"<%= link_to 'Bekijk', vacancy_path(v) %></td>
+							<td><a class="button-small right"<%= link_to 'Bekijk', vacancy_path(v) %></td>
 						</tr>
 					</tbody>
 				</div>

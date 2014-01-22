@@ -1,5 +1,7 @@
 class NewsController < ApplicationController
 	  
+  before_filter :authorize_admin, :except => [:index, :show]  
+    
   def index
   	@news = News.all
   end

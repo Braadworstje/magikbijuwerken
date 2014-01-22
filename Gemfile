@@ -9,6 +9,9 @@ gem 'chosen-rails'
 gem 'compass-rails', github: 'Compass/compass-rails'
 gem 'carrierwave'
 gem 'geocoder'
+gem 'jquery-ui-rails'
+
+gem 'css3-progress-bar-rails'
 
 group :development, :test do
    gem 'sqlite3'

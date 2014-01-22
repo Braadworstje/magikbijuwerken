@@ -11,5 +11,7 @@
  *= require chosen
  *= require_self
  *= require bootstrap
-  *= require_tree .
+ *= require 'css3-progress-bar'
+ *= require jquery.ui.tabs
+ *= require_tree .
  */

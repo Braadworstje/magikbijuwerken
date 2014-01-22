@@ -2,7 +2,10 @@ Project::Application.routes.draw do
   resources :sessions, only: [:new, :create, :edit, :update, :destroy]
   resources :users do
     get 'download_cv', on: :member
+    get 'remove_cv', on: :member
     get 'image', on: :member
+    get 'applications', on: :member
+    get 'remove_image', on: :member
   end
   resources :vacancies do
     get 'apply_to_vacancy', on: :member
@@ -17,7 +20,6 @@ Project::Application.routes.draw do
   root 'pages#home'
 
   match '/signup',  to: 'users#new',            via: 'get'
-  match '/edit',    to: 'users#edit',           via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/vacancies', to: 'vacancies#index',    via: 'get'
@@ -25,7 +27,6 @@ Project::Application.routes.draw do
   match '/vacancies/new', to: 'vacancies#new',  via: 'get'
   match '/vacancies/edit', to: 'vacancies#edit',  via: 'get'
   match '/users',       to: 'users#index',      via: 'get'
-  match '/applications', to: 'users#applications',  via: 'get'
   match '/admin/stats', to: 'admin#stats', via: 'get'
   match '/admin/pages', to: 'admin#pages', via: 'get'
   match '/admin/replies', to: 'admin#replies', via: 'get'

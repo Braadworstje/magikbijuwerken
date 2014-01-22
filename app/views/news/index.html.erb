@@ -6,7 +6,7 @@
 	        <%= render partial: "users/nav" %>
     	<div class="box">
     		<a class="title">Nieuws</a>
-	    	<table class="table table-striped">
+	    	<table class="table">
 				<% for n in @news %>
 					<tr>
 						<td class="col-md-2">
@@ -15,7 +15,7 @@
 
 			        	<td class="col-md-10">
 							<h1><%= n.title %></h1>
-							<b><%= n.created_at.to_formatted_s(:day_month_year) %></b>
+							<p><%= n.created_at.to_formatted_s(:day_month_year) %></p>
 							<%
 								str = n.content
 								first_100_words = str.split(" ").first(100).join(" ")

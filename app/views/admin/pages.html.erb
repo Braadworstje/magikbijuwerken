@@ -3,35 +3,35 @@
 	<div class="col-md-9 column">
 		<%= render partial: "admin/nav" %>
 		
-			<div class="span12">
+		<div class="span12">
 			<%= link_to "Nieuwe set paginas aanmaken", new_page_path %>
-    		<a class="title">Pagina's</a>
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th><%= sortable("faq", "Veel gestelde vragen") %></th>
-						<th><%= sortable("terms", "Algemene voorwaarden") %></th>
-						<th><%= sortable("company", "Bedrijfsinformatie") %></th>
-						<th><%= sortable("contact", "Contactinformatie") %></th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @pages.each do |p| %>
-						<tr>
-							<td><%= p.faq %></td>
-							<td><%= p.terms %></td>
-							<td><%= p.company %></td>
-							<td><%= p.contact %></td>
+			<a class="title">Pagina's</a>
+			<% @pages.each do |p| %>
+							
+			<div><a class="title">Paginaset <%= p.id %></a></div>
+			<div>
+				<h2>Veel gestelde vragen</h2>
+				<p><%= p.faq %></p></div>
+			<div>
+				<h2>Algemene voorwaarden</h2>
+				<p><%= p.terms %></p>
+			</div>
+			<div>
+				<h2>Bedrijfsinformatie</h2>
+				<p><%= p.company %></p></div>
+			<div>
+				<h2>Contactgegevens</h2>
+				<p><%= p.contact %></p></div>
 				
-							<td><%= link_to "Paginaset bewerken", edit_page_path(p) %></td>
-							<td><%= link_to "Paginaset verwijderen", p, :confirm => "Weet u het zeker?", :method => :delete %></td>
-						</tr>
-				<% end %>
-			</tbody>
-		</table>
-			</div>
-			<div class="span3">
-			</div>
+			<div><b><%= link_to "Paginaset bewerken", edit_page_path(p), :class => "button-medium left" %></b></div>
+		<div><b><%= link_to "Paginaset verwijderen", p, :confirm => "Weet u het zeker?", :method => :delete, :class => "button-medium left" %></b></div>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+</div>
+<div class="span3">
+</div>
 
-	</div>
+</div>
 </div>

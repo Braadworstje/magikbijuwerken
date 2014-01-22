@@ -6,14 +6,14 @@
 		<div>
 			<h3>Werkzoekenden in wachtrij</h3>
 			
-			<table class="table table-striped">
-				<thead>
+			<table class="table">
+				
 					<tr>
 						<th><%= sortable("first_name", "naam") %></th>
 						<th><%= sortable("created_at", "naam") %></th>
 					</tr>
-				</thead>
-				<tbody>
+					
+				
 					<% @openusers.each do |u| %>
 						<tr>
 							<td>Naam: <%= u.first_name %> <%= u.last_name %><br>
@@ -28,26 +28,26 @@
 							</td>
 							
 							<td>
-								Gemeente: <%= u.municipal %>
+								<p>Gemeente: <%= u.municipal %></p>
+								<p>Contactgegevens: <%= u.municipal_contact %></p>
 							</td>
 				
 							<td><%= link_to "Profiel bewerken", edit_user_path(u) %><br>
-								<%= link_to "Afmelden", signout_path, :method => :delete %></td>
+								<%= link_to "Verwijderen", u, :method => :delete, :confirm => "Weet u het zeker?" %></td>
 						</tr>
 				<% end %>
-			</tbody>
+				
 		</table>
 		
 		<div>
 			<h3>Actieve werkzoekenden</h3>
 			<table class="table table-striped">
-				<thead>
+				
 					<tr>
 						<th><%= sortable("first_name", "naam") %></th>
 						<th><%= sortable("created_at", "naam") %></th>
 					</tr>
-				</thead>
-				<tbody>
+				
 					<% @acceptedusers.each do |u| %>
 						<tr>
 							<td>Naam: <%= u.first_name %> <%= u.last_name %><br>
@@ -62,14 +62,15 @@
 							</td>
 							
 							<td>
-								Gemeente: <%= u.municipal %>
+								<p>Gemeente: <%= u.municipal %><br>
+								Contactgegevens: <%= u.municipal_contact %></p>
 							</td>
 				
 							<td><%= link_to "Profiel bewerken", edit_user_path(u) %><br>
-								<%= link_to "Afmelden", signout_path, :method => :delete %></td>
+								<%= link_to "Verwijderen", u, :method => :delete %></td>
 						</tr>
 				<% end %>
-			</tbody>
+			
 		</table>
 		
 		</div>

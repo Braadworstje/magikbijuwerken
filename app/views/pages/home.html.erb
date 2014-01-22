@@ -1,5 +1,24 @@
+<div class="container">
+	<div class="col-md-9 col-md-offset-2">
+		<h1>Maakerwerkvan.nl</h1>
+	</div>
+    <div class="row">
+		<div class="col-md-9 col-md-offset-2">
+    		<div class="panel panel-default">
+			  	<div class="panel-heading">
+			    	<a class="title">Inloggen</a>
+			 	</div>
 
-<h1>Mag ik bij u werken is een website voor werkzoekenden.</h1>
-<%= link_to "Log in", signin_path, class: "btn btn-large btn-success" %>
-<%= link_to "Registreren", signup_path, class: "btn btn-large btn-warning" %>
+				
+				<%= link_to "Log in", signin_path, class: "btn btn-large btn-success" %>
+				<%= link_to "Registreren", signup_path, class: "btn btn-large btn-warning" %>
 
+				<h1>Over maakerwerkvan.nl</h1>
+				<%= @pages.company %>
+
+				<h1>Contact</h2>
+				<%= @pages.contact %>
+			</div>
+		</div>
+	</div>
+</div>

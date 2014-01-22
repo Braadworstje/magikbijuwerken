@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :current_user?, :is_admin?, :authorize
+  helper_method :current_user, :current_user?, :is_admin?, :authorize, :authorize_user
 
   def match(user)
     @user = user
@@ -60,6 +60,15 @@ end
   def current_user?
    current_user.present?
   end
+  
+  def authorize_user
+    @user = User.find(params[:id]) if @user.nil?
+    redirect_to current_user, notice: 'Verboden toegang' if (current_user.admin != true && @user.id != current_user.id)
+  end
+  
+  def authorize_admin
+    redirect_to current_user, notice: 'U bent geen admin' if (current_user && current_user.admin != true)
+  end
 
   protected
 
@@ -71,6 +80,5 @@ end
   def admin?
     if current_user && current_user.admin?
   end
-
 end
 

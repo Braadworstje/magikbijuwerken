@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   
+  before_filter :authorize_admin, :except => [:faq, :terms, :company, :contact]
+  
   def index
   	@pages = Page.all
   end
@@ -45,7 +47,7 @@ class PagesController < ApplicationController
   end
   
   def home
-    
+    @pages = Page.order("created_at").last
   end
   
   def faq

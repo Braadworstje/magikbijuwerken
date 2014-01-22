@@ -1,15 +1,17 @@
 class VacanciesController < ApplicationController
   helper_method :sort_column, :sort_direction, :sort_matchscore
+  before_filter :authorize_admin, :except => [:index, :show, :apply_to_vacancy, :sort_direction, :sort_column]
   
   def index
     @vacancies = Vacancy.all(:order => sort_column + " " + sort_direction)
-    @user = User.find_by_id(current_user)
     match(current_user)
   end
 
 
   def show
     @vacancy = Vacancy.find(params[:id])
+    
+    match(current_user)
   end
 
   def apply_to_vacancy

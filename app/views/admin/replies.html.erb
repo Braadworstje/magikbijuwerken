@@ -63,39 +63,5 @@
 				</table>
 			</div>
 
-			<div class="row">
-				<h2> Bedrijven </h2>
-				<% @vacancies.each do |v| %>
-	
-					<% if v.users.count > 0 %>
-			
-						<% v.users.each do |u| %>
-							<div>
-								<i><%= u.created_at.to_formatted_s(:day_month_year) %></i><br><br>
-				
-								<b>Bedrijf: </b><%= link_to v.name, v %><br>
-								<b>Functie: </b><%= link_to v.title, v %><br>
-								<b>Tel: </b><%= v.telephone_number %><br>
-								<b>Email: </b><%= v.email %>
-				
-								<p>is gereageerd op door: </p>
-				
-								<b>Naam: </b><%= link_to (u.first_name + " " + u.last_name), u %><br>
-								<b>Tel: </b><%= u.telephone_number %><br>
-								<b>Email: </b><%= u.email %><br>
-							</div>
-						<% end %>
-					<% else %>
-						<b>Bedrijf: </b><%= link_to v.name, v %><br>
-						<b>Functie: </b><%= link_to v.title, v %><br>
-						<b>Tel: </b><%= v.telephone_number %><br>
-						<b>Email: </b><%= v.email %>
-			
-						<p>is nog niet op gereageerd door een gebruiker</p>
-					<% end %>
-	
-				<% end %>
-			</div>
-
 	</div>
 </div>

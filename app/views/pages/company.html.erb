@@ -1,15 +1,11 @@
 <div class="row clearfix">
-	<%= render partial: "users/profile" %>
+	<%= render partial: "users/profile" if current_user? %>
 	<div class="col-md-9 column">
-		<%= render partial: "users/nav" %>
+		<%= render partial: "users/nav" if current_user? %>
 
-		<div class="panel panel-primary">
-		        <div class="panel-heading">
-		        	Over maakerwerkvan.nl
-		        </div>
-		        <div class="panel-body">
+		<div>
+		        <a class="title">Over Maakerwerkvan.nl</a><br>
 					<%= @page.company %>
-		        </div>
 		</div>
 	</div>
 </div>

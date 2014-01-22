@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140119095420) do
+ActiveRecord::Schema.define(version: 20140122093813) do
 
   create_table "news", force: true do |t|
     t.string   "title"
@@ -53,22 +53,23 @@ ActiveRecord::Schema.define(version: 20140119095420) do
     t.string   "first_name"
     t.string   "last_name"
     t.date     "date_of_birth"
-    t.integer  "telephone_number"
     t.string   "gender"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",            default: false, null: false
+    t.boolean  "admin",             default: false, null: false
     t.string   "address"
     t.string   "image"
     t.string   "municipal"
     t.string   "pdf"
     t.string   "cv"
-    t.boolean  "accepted",         default: false
+    t.boolean  "accepted",          default: false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "municipal_contact"
+    t.string   "telephone_number"
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"

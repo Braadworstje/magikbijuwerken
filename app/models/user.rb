@@ -24,7 +24,10 @@ class User < ActiveRecord::Base
  accepts_nested_attributes_for :users_qualities_skills, :qualities
  accepts_nested_attributes_for :users_qualities_skills, :skills
 
- validates :email, uniqueness: true 
+ validates :email, uniqueness: true
+ validates :first_name, :presence => true
+ validates :last_name, :presence => true
+ validates :password, :presence => true
 
  geocoded_by :address
  after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }

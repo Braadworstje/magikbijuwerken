@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :authorize, :except => [:index, :new, :create]
+  before_filter :authorize_user, :except => [:new, :create]
+  before_action :authorize, :except => [:new, :create]
+
   helper_method :sort_column, :sort_direction
   
   def index
@@ -65,10 +67,23 @@ class UsersController < ApplicationController
     :x_sendfile => true)
   end
 
+  def remove_cv
+    @user = User.find(params[:id])
+    @user.remove_cv = true
+    
+    if @user.save
+      redirect_to edit_user_path(@user)
+    end
+  end
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to root_url
+    if current_user.admin
+      redirect_to admin_users_path
+    else
+      redirect_to root_url
+    end
   end
 
   def create
@@ -77,8 +92,10 @@ class UsersController < ApplicationController
     @qualities = Quality.all
 
     if @user.save
-      params[:quality_id].split(',').each do |id|
-        @user.qualities << Quality.find(id)
+      if params.has_key?(:quality_id)
+        params[:quality_id].split(',').each do |id|
+          @user.qualities << Quality.find(id)
+        end
       end
 
       flash[:notice] = "User profile created"
@@ -94,8 +111,17 @@ class UsersController < ApplicationController
     send_file "#{@user.image_url}", :disposition => 'inline', :x_sendfile => true
   end
 
+  def remove_image
+    @user = User.find(params[:id])
+    @user.remove_image = true
+    
+    if @user.save
+      redirect_to edit_user_path(@user)
+    end
+  end
+
   def applications
-    @user = User.find_by_id(current_user)
+    @user = User.find(params[:id])
   end
    
 end
@@ -104,8 +130,8 @@ private
   
 def user_params 
   params.require(:user).permit(
-  :email, :password, :password_confirmation, :admin, :address, :accepted, :gender, :first_name, :last_name, :quality_id, :vacancy_id, :quality_ids, :vacancy_ids, 
-  :image, :remove_image, :municipal, :cv, :remove_cv, :sort_column, :sort_direction, {:qualities_attributes => [:quality]}, {:vacancies_attributes => [:description]})
+  :email, :password, :password_confirmation, :admin, :address, :accepted, :gender, :first_name, :last_name, :quality_id, :vacancy_id, :quality_ids, :vacancy_ids, :telephone_number,
+  :image, :remove_image, :municipal, :municipal_contact, :cv, :remove_cv, :sort_column, :sort_direction, {:qualities_attributes => [:quality]}, {:vacancies_attributes => [:description]})
 end
 #def person_params
 #    params.require(:person).permit(:name, :age)

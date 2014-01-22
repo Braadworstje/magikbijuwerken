@@ -1,12 +1,33 @@
-
-    <h1>Log in </h1>
-    <%= form_tag sessions_path do %>  
-        <%= label_tag "Email adres" %>
-        <%= text_field_tag 'email' %>
-        <%= label_tag "Wachtwoord" %><br>
-        <%= password_field_tag 'password' %>
-      <%= submit_tag 'Login' %>
-    <% end %>
- 
-
-
+	<div class="container">
+		<div class="col-md-9 col-md-offset-2">
+			<h1>Maakerwerkvan.nl</h1>
+		</div>
+	    <div class="row">
+			<div class="col-md-4 col-md-offset-4">
+	    		<div class="panel panel-default">
+				  	<div class="panel-heading">
+				    	<a class="title">Inloggen</a>
+				 	</div>
+					
+					<%= form_tag sessions_path do %>
+				  	<div class="panel-body">
+				    	<form accept-charset="UTF-8" role="form">
+	                    <fieldset>
+				    	  	<div class="form-group">
+								<b>Email</b><br>
+				    		    <%= text_field_tag 'email', '', placeholder: 'Email' %>
+				    		</div>
+				    		<div class="form-group">
+								<b>Wachtwoord</b><br>
+				    			<%= password_field_tag 'password' %>
+				    		</div>
+				    	    </div>
+				    		<%= submit_tag 'Login', :class => "btn btn-lg btn-success btn-block" %>
+				    	</fieldset>
+				      	</form>
+				    </div>
+					 <% end %>
+				</div>
+			</div>
+		</div>
+	</div>

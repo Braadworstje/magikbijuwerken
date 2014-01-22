@@ -1,4 +1,7 @@
 class QualitiesController < ApplicationController
+    
+    before_filter :authorize_admin
+  
   
     def show
     	@quality = Quality.find(params[:id])
