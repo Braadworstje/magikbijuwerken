@@ -58,16 +58,6 @@
 					<%= f.label "Contactgegevens gemeente" %><br>
 					<%= f.text_field :municipal_contact %>
 				</div>
-				
-				<div class = "field">
-					<%= f.label "Wachtwoord*" %><br>
-					<%= f.password_field :password %>
-				</div>
-
-				<div class = "field">
-					<%= f.label "Bevestig wachtwoord*" %><br>
-					<%= f.password_field :password_confirmation %>
-				</div>
 			
 				<% if current_user.admin? %> 
 				<div class = "field">
@@ -122,6 +112,18 @@
 					<%= link_to 'Download CV', download_cv_user_path(@user), :class => "button-medium left" %><br><br>
 				</div>
 				<% end %>
+			</div>
+			<div>
+				<p>Vul je wachtwoord in om je account aan te passen</p>
+				<div class = "field">
+					<%= f.label "Wachtwoord*" %><br>
+					<%= f.password_field :password %>
+				</div>
+
+				<div class = "field">
+					<%= f.label "Bevestig wachtwoord*" %><br>
+					<%= f.password_field :password_confirmation %>
+				</div>
 			</div>
 			<%= f.submit "Aanpassen", class: "btn btn-large btn-warning" %>
 			<% end %>

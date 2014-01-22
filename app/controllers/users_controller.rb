@@ -47,8 +47,10 @@ class UsersController < ApplicationController
 
     @vacancies = Vacancy.all
     
-    @qualities = Quality.all
     @defaultqualities = @user.qualities.all
+    
+    @qualities = Quality.all
+    
     if @user.update_attributes(user_params)
       
       @user.users_qualities_skills.destroy_all
