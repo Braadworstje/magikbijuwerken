@@ -14,17 +14,17 @@
 			<div><a class="title">Paginaset <%= p.id %></a></div>
 			<div>
 				<h2>Veel gestelde vragen</h2>
-				<p><%= p.faq %></p></div>
+				<p><%= simple_format p.faq %></p></div>
 			<div>
 				<h2>Algemene voorwaarden</h2>
-				<p><%= p.terms %></p>
+				<p><%= simple_format p.terms %></p>
 			</div>
 			<div>
 				<h2>Bedrijfsinformatie</h2>
-				<p><%= p.company %></p></div>
+				<p><%= simple_format p.company %></p></div>
 			<div>
 				<h2>Contactgegevens</h2>
-				<p><%= p.contact %></p></div>
+				<p><%= simple_format p.contact %></p></div>
 				
 			<div><b><%= link_to "Paginaset bewerken", edit_page_path(p), :class => "button-medium left" %></b></div>
 		<div><b><%= link_to "Paginaset verwijderen", p, :confirm => "Weet u het zeker?", :method => :delete, :class => "button-medium left" %></b></div>
