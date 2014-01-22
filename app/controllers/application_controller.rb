@@ -33,7 +33,11 @@ class ApplicationController < ActionController::Base
           end
         end
       end
-      @matchscore[va] = @matchingqualities[va].size.to_f / @qualitiestotal.to_f * 100.0
+      if @qualitiestotal == 0
+        @matchscore[va] = 0.0
+      else
+        @matchscore[va] = @matchingqualities[va].size.to_f / @qualitiestotal.to_f * 100.0
+      end
     end
   end
   

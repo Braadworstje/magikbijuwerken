@@ -47,10 +47,13 @@ class UsersController < ApplicationController
 
     @vacancies = Vacancy.all
     if @user.update_attributes(user_params)
+      
       @user.users_qualities_skills.destroy_all
       
-      params[:quality_id].split(',').each do |id|
-        @user.qualities << Quality.find(id)
+      if params.has_key?(:quality_id)
+        params[:quality_id].split(',').each do |id|
+          @user.qualities << Quality.find(id)
+        end
       end
       
       redirect_to current_user
