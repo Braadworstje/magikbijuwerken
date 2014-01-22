@@ -44,7 +44,7 @@
                 <a class="title">Laatste nieuws</a>
                 
                 <table class="table">
-					<% @news.each do |n| %>
+					<% @news.limit(3).each do |n| %>
                     <tr>
                         <td class="col-md-3">
                            
