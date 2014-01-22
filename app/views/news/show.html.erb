@@ -7,7 +7,7 @@
 		<div class="box_710px">
 	<h1><%= @news.title %></h1><br>
 	<%= @news.created_at %><br>
-	<p><%= @news.content %></p><br>
+	<p><%= simple_format @news.content %></p><br>
 </div>
 </div>
 

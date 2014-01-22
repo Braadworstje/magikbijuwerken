@@ -1,14 +1,21 @@
+<div class="row clearfix">
+	<%= render partial: "admin/profile" %>
+	<div class="col-md-9 column">
+		<%= render partial: "admin/nav" %>
 
-        Vacature wijzigen
+		<a class="title">Vacature wijzigen<a>
 
-                <%= form_for(@news)  do |n| %>
+			<%= form_for(@news)  do |n| %>
 
-                <%= n.text_field :title %>
-                <br>
-                <%= n.text_field :content, :class => "form-control", :required => "required" %>
-                <br>
+			<%= n.text_field :title %>
+			<br>
+			<%= n.text_field :content, :class => "form-control", :required => "required" %>
+			<br>
 				
-               <%= n.submit %>
-        <% end %> 
-        </div>
+			<%= n.submit %>
+			<% end %> 
+		</div>
+	</div>
+
+</div>
 </div>

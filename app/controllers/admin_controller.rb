@@ -21,6 +21,10 @@ class AdminController < ApplicationController
     @vacancies = Vacancy.all(:order => sort_column + " " + sort_direction)
   end
   
+  def news
+    @news = News.all(:order => sort_column + " " + sort_direction)
+  end
+  
   def users
     @users = User.all
     @acceptedusers = User.where(accepted: true)

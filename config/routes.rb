@@ -33,6 +33,7 @@ Project::Application.routes.draw do
   match '/admin/vacancies', to: 'admin#vacancies', via: 'get'
   match '/admin/users', to: 'admin#users', via: 'get'
   match '/admin/qualities', to: 'admin#qualities', via: 'get'
+  match '/admin/news', to: 'admin#news', via: 'get'
   match '/faq', to: 'pages#faq', via: 'get'
   match '/terms', to: 'pages#terms', via: 'get'
   match '/company', to: 'pages#company', via: 'get'

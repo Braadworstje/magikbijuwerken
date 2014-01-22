@@ -47,11 +47,11 @@
 					<% @news.each do |n| %>
                     <tr>
                         <td class="col-md-3">
-                            <img> </img>
+                           
                         </td>  
                         <td class="col-md-9">
                             <h1><%= n.title %></h1>
-                            <p><%= n.content %>
+                            <p><%= simple_format n.content %>
                             </p>
                          
                                <%= link_to 'Lees meer', n, :class => "button-medium" %>
