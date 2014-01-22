@@ -1,28 +1,37 @@
-<div class="panel panel-primary">
-        <div class="panel-heading">
-        Vacature plaatsen
-        </div>
-        <div class="panel-body">
-                <%= form_for(@vacancy)  do |n| %>
+<div class="row clearfix">
+	<%= render partial: "admin/profile" %>
+	<div class="col-md-9 column">
+		<%= render partial: "admin/nav" %>
+
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				Vacature plaatsen
+			</div>
+			<div class="panel-body">
+				<%= form_for(@vacancy)  do |n| %>
 				
 				<%= n.text_field :name, :placeholder => "Bedrijfsnaam"%>
 				<br>
-                <%= n.text_field :title, :placeholder => "Vacature titel" %>
-                <br>
-                <%= n.text_field :description, :placeholder => "Beschrijving", :class => "form-control", :required => "required" %>
-                <br>
-                <%= n.text_field :requirements, :placeholder => "Functie omschrijving", :class => "form-control", :required => "required" %>
-                <br>
-                <%= n.text_field :address, :placeholder => "Plaats", :class => "form-control", :required => "required" %>
+				<%= n.text_field :title, :placeholder => "Vacature titel" %>
+				<br>
+				<%= n.text_field :description, :placeholder => "Beschrijving", :class => "form-control", :required => "required" %>
+				<br>
+				<%= n.text_field :requirements, :placeholder => "Functie omschrijving", :class => "form-control", :required => "required" %>
+				<br>
+				<%= n.text_field :address, :placeholder => "Plaats", :class => "form-control", :required => "required" %>
 
-                <%= select_tag(:quality_id, options_for_select(@qualities.collect{ |q| [q.quality, q.id] }), {:multiple => true,  class: 'chosen-quality-select'}) %><br>
+				<%= select_tag(:quality_id, options_for_select(@qualities.collect{ |q| [q.quality, q.id] }), {:multiple => true,  class: 'chosen-quality-select'}) %><br>
                 
 
             
 
 
 
-               <button class="btn btn-large btn-warning" n.submit>Plaats vacature</button>
-        <% end %> 
-        </div>
+				<button class="btn btn-large btn-warning" n.submit>Plaats vacature</button>
+				<% end %> 
+			</div>
+		</div>
+
+
+	</div>
 </div>
