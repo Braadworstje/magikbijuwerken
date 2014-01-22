@@ -119,10 +119,10 @@ class UsersController < ApplicationController
 
   def remove_image
     @user = User.find(params[:id])
-    @user.remove_image = true
-    
-    if @user.save
+    if @user.update_attribute("remove_image", "true")
       redirect_to edit_user_path(@user)
+    else
+      redirect_to user_path(@user)
     end
   end
 

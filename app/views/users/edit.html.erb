@@ -101,7 +101,7 @@
 				<h3>Mijn kwaliteiten</h3>
 				<div class = "field">
 					<%= f.label "Selecteer kwaliteiten" %>
-					<%= select_tag(:quality_id, options_for_select(@qualities.collect{ |q| [q.quality, q.id] }, @defaultqualities.map{ |dq| dq.id }) ,{:multiple => true,  class: 'chosen-quality-select'}) %>
+					<%= select_tag(:quality_id, options_for_select(@qualities.collect{ |q| [q.quality, q.id] }, @defaultqualities.map{ |dq| dq.id }), {:multiple => true,  class: 'chosen-quality-select'}) %>
 				</div>
 			</div>
 			
