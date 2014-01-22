@@ -15,7 +15,8 @@ class AdminController < ApplicationController
   end
   
   def replies
-    @users = User.all(:order => sort_column + " " + sort_direction)
+    @users = User.where(admin: false)
+    @users.order(sort_column + " " + sort_direction)
     
     @vacancies = Vacancy.all(:order => sort_column + " " + sort_direction)
   end
@@ -67,7 +68,7 @@ end
 private
   
 def sort_column
-  %w[quality title created_at name #{@matchscore[Vacancy.id]}].include?(params[:sort]) ? params[:sort] : "created_at"
+  %w[quality title first_name created_at name #{@matchscore[Vacancy.id]}].include?(params[:sort]) ? params[:sort] : "created_at"
 end
   
 def sort_direction

@@ -46,6 +46,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     @vacancies = Vacancy.all
+    
+    @qualities = Quality.all
+    @defaultqualities = @user.qualities.all
     if @user.update_attributes(user_params)
       
       @user.users_qualities_skills.destroy_all

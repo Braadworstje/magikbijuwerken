@@ -3,77 +3,84 @@
 	<div class="col-md-9 column">
 		<%= render partial: "admin/nav" %>
 		
-		<div>
 			<a class="title">Gebruikers</a>
 			<h3>Werkzoekenden in wachtrij</h3>
 			
 			<table class="table">
 				
-					<tr>
-						<th><%= sortable("first_name", "naam") %></th>
-						<th><%= sortable("created_at", "naam") %></th>
-					</tr>
+				<tr>
+					<th><%= sortable("first_name", "naam") %></th>
+					<th><%= sortable("created_at", "status") %></th>
+					<th><%= sortable("created_at", "gemeente") %></th>
+				</tr>
 					
 				
-					<% @openusers.each do |u| %>
-						<tr>
-							<td>Naam: <%= u.first_name %> <%= u.last_name %><br>
-								Tel: <%= u.telephone_number %><br>
-								Email: <%= u.email %></td>
-							<td>	
-							    <% if u.accepted? %>
-							    	<p>status: actieve gebruiker</p>
-							    <% else %>
-							    	<p>status: in wachtrij</p>
-								<% end %>
-							</td>
+				<% @openusers.each do |u| %>
+				<tr>
+					<td>Naam: <%= u.first_name %> <%= u.last_name %><br>
+						Tel: <%= u.telephone_number %><br>
+						Email: <%= u.email %></td>
+						<td>	
+							<% if u.accepted? %>
+							<p>status: actieve gebruiker</p>
+							<% elsif u.accepted == false %>
+							<p>status: in wachtrij</p>
+							<% elsif u.admin? %>
+							<p>gebruiker is admin</p>
+							<% end %>
+						</td>
 							
-							<td>
-								<p>Gemeente: <%= u.municipal %><br>
+						<td>
+							<p>Gemeente: <%= u.municipal %><br>
 								Contactgegevens: <%= u.municipal_contact %></p>
 							</td>
 				
 							<td><%= link_to "Profiel bewerken", edit_user_path(u) %><br>
-								<%= link_to "Verwijderen", u, :method => :delete, :confirm => "Weet u het zeker?" %></td>
-						</tr>
-				<% end %>
+								<%= link_to "Verwijderen", u, :method => :delete, :confirm => "Weet u het zeker?" if !u.admin %></td>
+							</tr>
+							<% end %>
 				
-		</table>
-		
-		<div>
-			<h3>Actieve werkzoekenden</h3>
-			<table class="table table-striped">
+						</table>
+					
+							<h3>Actieve werkzoekenden</h3>
+							<table class="table table-striped">
 				
-					<tr>
-						<th><%= sortable("first_name", "naam") %></th>
-						<th><%= sortable("created_at", "naam") %></th>
-					</tr>
+								<tr>
+									<th><%= sortable("first_name", "naam") %></th>
+									<th><%= sortable("created_at", "status") %></th>
+									<th><%= sortable("created_at", "gemeente") %></th>
+								</tr>
 				
-					<% @acceptedusers.each do |u| %>
-						<tr>
-							<td>Naam: <%= u.first_name %> <%= u.last_name %><br>
-								Tel: <%= u.telephone_number %><br>
-								Email: <%= u.email %></td>
-							<td>	
-							    <% if u.accepted? %>
-							    	<p>status: actieve gebruiker</p>
-							    <% else %>
-							    	<p>status: in wachtrij</p>
-								<% end %>
-							</td>
+								<% @acceptedusers.each do |u| %>
+								<tr>
+									<td>Naam: <%= u.first_name %> <%= u.last_name %><br>
+										Tel: <%= u.telephone_number %><br>
+										Email: <%= u.email %></td>
+										<td>	
+											<% if !u.admin? %>
+											<% if u.accepted? %>
+											<p>status: actieve gebruiker</p>
+											<% else %>
+											<p>status: in wachtrij</p>
+											<% end%>
+											<% else %>
+											<p>gebruiker is admin</p>
+											<% end %>
+										</td>
 							
-							<td>
-								<p>Gemeente: <%= u.municipal %><br>
-								Contactgegevens: <%= u.municipal_contact %></p>
-							</td>
+										<td>
+											<p>Gemeente: <%= u.municipal %><br>
+												Contactgegevens: <%= u.municipal_contact %></p>
+											</td>
 				
-							<td><%= link_to "Profiel bewerken", edit_user_path(u) %><br>
-								<%= link_to "Verwijderen", u, :method => :delete %></td>
-						</tr>
-				<% end %>
+											<td><%= link_to "Profiel bewerken", edit_user_path(u) %><br>
+												<%= link_to "Verwijderen", u, :method => :delete, :confirm => "Weet u het zeker?" if !u.admin %></td>
+											</tr>
+											<% end %>
 			
-		</table>
+										</table>
 		
-		</div>
-	</div>
-</div>
+								
+								
+							</div>
+						</div>
