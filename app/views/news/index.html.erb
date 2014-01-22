@@ -8,12 +8,9 @@
     		<a class="title">Nieuws</a>
 	    	<table class="table">
 				<% for n in @news %>
-					<tr>
-						<td class="col-md-2">
-			            	<img> </img>
-			        	</td> 
+					<tr> 
 
-			        	<td class="col-md-10">
+			        	<td class="col-md-12">
 							<h1><%= n.title %></h1>
 							<p><%= n.created_at.to_formatted_s(:day_month_year) %></p>
 							<%

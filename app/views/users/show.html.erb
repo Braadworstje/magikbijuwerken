@@ -46,10 +46,7 @@
                 <table class="table">
 					<% @news.limit(3).each do |n| %>
                     <tr>
-                        <td class="col-md-3">
-                           
-                        </td>  
-                        <td class="col-md-9">
+                        <td class="col-md-12">
                             <h1><%= n.title %></h1>
                             <p><%= simple_format n.content %>
                             </p>
