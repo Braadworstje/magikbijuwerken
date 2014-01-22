@@ -4,6 +4,7 @@
 		<%= render partial: "admin/nav" %>
 		
 		<div>
+			<a class="title">Gebruikers</a>
 			<h3>Werkzoekenden in wachtrij</h3>
 			
 			<table class="table">
@@ -28,8 +29,8 @@
 							</td>
 							
 							<td>
-								<p>Gemeente: <%= u.municipal %></p>
-								<p>Contactgegevens: <%= u.municipal_contact %></p>
+								<p>Gemeente: <%= u.municipal %><br>
+								Contactgegevens: <%= u.municipal_contact %></p>
 							</td>
 				
 							<td><%= link_to "Profiel bewerken", edit_user_path(u) %><br>

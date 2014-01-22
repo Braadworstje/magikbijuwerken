@@ -8,17 +8,17 @@
 			  	<div class="panel-heading">
 			    	<a class="title">Registreer</a>
 			 	</div>
-
+				<p>* = verplicht</p>
 				<%= form_for @user, :html => {:multipart => true}  do |f| %>
 	  
 				<h3>Mijn persoonsgegevens</h3>
 				<div class = "field">
-					<%= f.label "Voornaam" %><br>
+					<%= f.label "Voornaam*" %><br>
 					<%= f.text_field :first_name, :placeholder => "voornaam" %>
 				</div>
 
 				<div class = "field">
-					<%= f.label "Achternaam" %><br>
+					<%= f.label "Achternaam*" %><br>
 					<%= f.text_field :last_name, :placeholder => "achternaam" %>
 				</div>
 
@@ -28,17 +28,17 @@
 				</div>
 
 				<div class = "field">
-					<%= f.label "Email adres" %><br>
+					<%= f.label "Email adres*" %><br>
 					<%= f.text_field :email, :placeholder => "uw@email.nl" %>
 				</div>
 	  
 				<div class = "field">
-					<%= f.label "Wachtwoord" %>
+					<%= f.label "Wachtwoord*" %><br>
 					<%= f.password_field :password%>
 				</div>
 
 				<div class = "field">
-					<%= f.label "Bevestig wachtwoord" %>
+					<%= f.label "Bevestig wachtwoord*" %><br>
 					<%= f.password_field :password_confirmation %>
 				</div>
       

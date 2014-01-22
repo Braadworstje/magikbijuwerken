@@ -3,18 +3,24 @@
 	<div class="col-md-9 column">
 		<%= render partial: "admin/nav" %>
 			<div>
-			        Paginas wijzigen
+			       <a class="title">Paginas wijzigen</a>
 
-			        <%= form_for(@page)  do |p| %>
+	               <%= form_for(@page) do |p| %>
+				   <div class="field">
+		               <%= p.text_area :faq, :placeholder => "Veelgestelde vragen" %>
+				   </div>
+				   <div class="field">
+					   <%= p.text_area :terms, :placeholder => "Algemene voorwaarden" %>
+					</div>   
+					<div class="field">
+					   <%= p.text_area :company, :placeholder => "Informatie over het bedrijf" %>
+				   </div>
+				   <div class="field">
+					   <%= p.text_area :contact, :placeholder => "Contactgegevens" %>
+				   </div>
 
-			               <%= p.text_area :faq, :placeholder => "Veelgestelde vragen" %>
-						   <%= p.text_area :terms, :placeholder => "Algemene voorwaarden" %>
-						   <%= p.text_area :company, :placeholder => "Informatie over het bedrijf" %>
-						   <%= p.text_area :contact, :placeholder => "Contactgegevens" %>
-				   
-				
-			               <%= p.submit %>
-			        <% end %>
+					   <%= p.submit "Opslaan" %>
+	        	   <% end %> 
 			</div>
 		</div>
 	</div>

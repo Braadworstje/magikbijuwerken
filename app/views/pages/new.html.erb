@@ -4,16 +4,21 @@
 		<%= render partial: "admin/nav" %>
 
 		<div class="panel panel-primary">
-		        <div class="panel-heading">
-		        	Pagina's aanmaken
-		        </div>
+			<a class="title">Pagina's aanmaken</a>
 		        <div class="panel-body">
 		               <%= form_for(@page) do |p| %>
-
+					   <div class="field">
 			               <%= p.text_area :faq, :placeholder => "Veelgestelde vragen" %>
+					   </div>
+					   <div class="field">
 						   <%= p.text_area :terms, :placeholder => "Algemene voorwaarden" %>
+						</div>   
+						<div class="field">
 						   <%= p.text_area :company, :placeholder => "Informatie over het bedrijf" %>
+					   </div>
+					   <div class="field">
 						   <%= p.text_area :contact, :placeholder => "Contactgegevens" %>
+					   </div>
 
 						   <%= p.submit "Opslaan" %>
 		        	   <% end %> 

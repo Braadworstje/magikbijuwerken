@@ -4,7 +4,7 @@
 		<%= render partial: "admin/nav" %>
 
 			<div class="row">
-				<h2> Gebruikers </h2>
+				<a class="title">Sollicitaties</a>
 	
 				<table class="table table-striped">
 					<thead>
@@ -39,10 +39,10 @@
 											<% if u.user_vacancies.where("user_id == :user_id AND vacancy_id == :vacancy_id",
   {user_id: u.id, vacancy_id: v.id}).first.finished %>
 												Afgerond<br>
-												<%= link_to "Verander naar open", change_finished(u, v) %>
+												<%= link_to "Verander naar open", change_finished_path(u, v) %>
 											<% else %>
 												Open<br>
-												<%= link_to "Verander naar afgerond", change_finished(u, v) %>
+												<%= link_to "Verander naar afgerond", change_finished_path(u, v) %>
 											<% end %></td>
 									</tr>
 									<% end %>

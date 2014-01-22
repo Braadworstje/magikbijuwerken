@@ -6,6 +6,7 @@
 		
 		<a class="edittitle">Wijzig gegevens</a>
 
+		<p>* = verplicht</p>
 
 		<%= form_for @user do |f| %>
          
@@ -19,12 +20,12 @@
 			</ul>     
 			<div id="fragment-1"><h3>Mijn persoonsgegevens</h3>
 				<div class = "field">
-					<%= f.label "Voornaam" %><br>
+					<%= f.label "Voornaam*" %><br>
 					<%= f.text_field :first_name %>
 				</div>
 
 				<div class = "field">
-					<%= f.label "Achternaam" %><br>
+					<%= f.label "Achternaam*" %><br>
 					<%= f.text_field :last_name %>
 				</div>
 
@@ -34,7 +35,7 @@
 				</div>
 
 				<div class = "field">
-					<%= f.label "Email adres" %><br>
+					<%= f.label "Email adres*" %><br>
 					<%= f.text_field :email %>
 				</div>
 				
@@ -59,12 +60,12 @@
 				</div>
 				
 				<div class = "field">
-					<%= f.label "Wachtwoord" %><br>
+					<%= f.label "Wachtwoord*" %><br>
 					<%= f.password_field :password %>
 				</div>
 
 				<div class = "field">
-					<%= f.label "Wachtwoord (opnieuw)" %><br>
+					<%= f.label "Bevestig wachtwoord*" %><br>
 					<%= f.password_field :password_confirmation %>
 				</div>
 			
@@ -113,7 +114,7 @@
 
 				
 				<div class = "field">
-					<%= link_to 'Download CV', download_cv_user_path(current_user), :class => "button-medium left" %><br><br>
+					<%= link_to 'Download CV', download_cv_user_path(@user), :class => "button-medium left" %><br><br>
 				</div>
 				<% end %>
 			</div>

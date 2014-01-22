@@ -8,6 +8,10 @@ class AdminController < ApplicationController
     @users = User.all
     @acceptedusers = User.where(accepted: true)
     @openusers = User.where(accepted: false)
+    
+    @finishedreplies = UserVacancy.where(finished: true)
+    
+    @openreplies = UserVacancy.where(finished: false)
   end
   
   def replies
@@ -34,18 +38,21 @@ class AdminController < ApplicationController
     @qualities = Quality.all(:order => sort_column + " " + sort_direction)
   end
   
-  def change_finished(user, vacancy)
+  def change_finished
 
-    uv = user.user_vacancies.where("user_id == :user_id AND vacancy_id == :vacancy_id",
-  {user_id: user.id, vacancy_id: vacancy.id}).first
+    @user = User.find(params[:user_id])
+    @vacancy = Vacancy.find(params[:vacancy_id])
+
+    uv = @user.user_vacancies.where("user_id == :user_id AND vacancy_id == :vacancy_id",
+    {user_id: @user.id, vacancy_id: @vacancy.id}).first
     
     if uv.finished
       if uv.update_attribute(:finished, 'false')
-        admin_replies_path
+        redirect_to admin_replies_path
       end
     else
       if uv.update_attribute(:finished, 'true')
-        admin_replies_path
+        redirect_to admin_replies_path
       end
     end
   end
@@ -53,8 +60,8 @@ end
 
 def user_params 
   params.require(:user).permit(
-     :email, :password, :password_confirmation, :admin, :accepted, :first_name, :last_name, :quality_id, :vacancy_id, :quality_ids, :vacancy_ids, :telephone_number,
-     :image, :remove_image, :municipal, :municipal_contact, :cv, :remove_cv, :gender, :address, :latitude, :longitude, {:qualities_attributes => [:quality]}, {:vacancies_attributes => [:description]})
+  :email, :password, :password_confirmation, :admin, :accepted, :first_name, :last_name, :quality_id, :vacancy_id, :quality_ids, :vacancy_ids, :telephone_number,
+  :image, :remove_image, :municipal, :municipal_contact, :cv, :remove_cv, :gender, :address, :latitude, :longitude, {:qualities_attributes => [:quality]}, {:vacancies_attributes => [:description]})
 end
 
 private

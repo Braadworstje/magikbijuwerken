@@ -14,10 +14,10 @@
 				<%= link_to "Registreren", signup_path, class: "btn btn-large btn-warning" %>
 
 				<h1>Over maakerwerkvan.nl</h1>
-				<%= @pages.company %>
+				<%= @pages.company if @pages %>
 
 				<h1>Contact</h2>
-				<%= @pages.contact %>
+				<%= @pages.contact if @pages %>
 			</div>
 		</div>
 	</div>

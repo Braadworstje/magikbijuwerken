@@ -37,6 +37,8 @@ Project::Application.routes.draw do
   match '/terms', to: 'pages#terms', via: 'get'
   match '/company', to: 'pages#company', via: 'get'
   match '/contact', to: 'pages#contact', via: 'get'
+  
+  get '/change_finished/:user_id/:vacancy_id', to: 'admin#change_finished', as: 'change_finished'
 
   get "users/new"
   get "users/index"

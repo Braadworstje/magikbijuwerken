@@ -3,9 +3,12 @@
 	<div class="col-md-9 column">
 		<%= render partial: "admin/nav" %>
 		
-		<div class="span12">
-			<%= link_to "Nieuwe set paginas aanmaken", new_page_path %>
+		<div>
+			
 			<a class="title">Pagina's</a>
+			
+			<%= link_to "Nieuwe set paginas aanmaken", new_page_path %>
+			
 			<% @pages.each do |p| %>
 							
 			<div><a class="title">Paginaset <%= p.id %></a></div>
