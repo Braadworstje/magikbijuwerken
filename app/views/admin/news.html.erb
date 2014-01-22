@@ -18,7 +18,7 @@
 								<tr>
 									<td><%= n.title %></td>
 									<td><%= simple_format n.content %></td>
-									<td><%= q.created_at.to_formatted_s(:day_month_year) %></td>
+									<td><%= n.created_at.to_formatted_s(:day_month_year) %></td>
 									<td><%= link_to "aanpassen", edit_news_path(n) %></td>
 									<td><%= link_to 'verwijderen', n, :confirm => 'Weet u het zeker?', :method => :delete %></td>
 								</tr>

@@ -16,7 +16,12 @@ class SessionsController < ApplicationController
       # sign in
       session[:user_id] = user.id
       flash[:notice] = "You are signed in!"
-      redirect_to current_user
+      
+      if !current_user.admin
+        redirect_to current_user
+      else
+        redirect_to admin_stats_path
+      end
     else
       flash.now[:alert] = "You have an invalid password or email adress!"
       render 'new'
